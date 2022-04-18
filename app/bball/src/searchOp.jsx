@@ -1,11 +1,18 @@
 import React, { Component } from "react";
+import player from "./data/players.csv"
 
 class SearchOp extends Component{
     state = {
         players: [],
     };
 
+    test () {
+        let tmp = require("./data/players.csv")
+        console.log(tmp);
+    }
+
     render(){
+        this.test();
         return(
             <React.Fragment>
                 <div class="container">
