@@ -8,16 +8,15 @@
         <title>Document</title>
     </head>
     <body>
-        <script src="csv.js"></script>
         <div class="container">
             <div class="col-md-12">
                 <h1 class=>Find Players</h1>
                 <h2 class=>Enter the name of a Player</h2>
-                <form id="form">
+                <!-- <form id="form"> -->
                     <input class="form-control" id="user-input" placeholder="Enter player...">
                     <button id="buttonid" class="btn btn-secondary">Find NBA Players</button>
-                </form>
-                <table class="table" cellpadding="10">
+                <!-- </form> -->
+                <table class="table" cellpadding="10" id="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -27,14 +26,11 @@
                             <th scope="col">Season</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th>hello</th>
-                        </tr>
+                    <tbody id="body">
                     </tbody>
                 </table>
-                <p id="test"> bye </p>
             </div>
         </div>
+        <script type="module" src="csv.js"></script>
     </body>
 </html>
