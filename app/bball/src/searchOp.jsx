@@ -2,11 +2,7 @@ import React, { Component } from "react";
 
 class SearchOp extends Component{
     state = {
-        game_details: [],
-        games: [],
         players: [],
-        ranking: [],
-        teams: [],
     };
 
     render(){
