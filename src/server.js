@@ -42,19 +42,18 @@ function csvTOJson(){
   let re = /\\r/g;
   
   json = json.replace(re, '');
-  
+
   fs.writeFileSync('output.json', json);
-  return json;
 }
 
-var users = csvTOJson(); 
+var users = require('./output.json'); 
 
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
-  res.render("server", {allUsers: users});
+  res.render("server", {allUsers: JSON.stringify(users)});
 });
 
 app.listen(3000, function () {
