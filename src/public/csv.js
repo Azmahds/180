@@ -7,7 +7,8 @@ window.addEventListener("load", (event) =>{
 })
 
 function getData(){
-    let data = [{"PLAYER_NAME":"Royce O'Neale","TEAM_ID":"1610612762","PLAYER_ID":"1626220","SEASON":"2019"},{"PLAYER_NAME":"Bojan Bogdanovic","TEAM_ID":"1610612762","PLAYER_ID":"202711","SEASON":"2019"},{"PLAYER_NAME":"Rudy Gobert","TEAM_ID":"1610612762","PLAYER_ID":"203497","SEASON":"2019"},{"PLAYER_NAME":"Donovan Mitchell","TEAM_ID":"1610612762","PLAYER_ID":"1628378","SEASON":"2019"},{"PLAYER_NAME":"Mike Conley","TEAM_ID":"1610612762","PLAYER_ID":"201144","SEASON":"2019"},{"PLAYER_NAME":"Joe Ingles","TEAM_ID":"1610612762","PLAYER_ID":"204060","SEASON":"2019"},{"PLAYER_NAME":"Ed Davis","TEAM_ID":"1610612762","PLAYER_ID":"202334","SEASON":"2019"},{"PLAYER_NAME":"Jeff Green","TEAM_ID":"1610612762","PLAYER_ID":"201145","SEASON":"2019"},{"PLAYER_NAME":"Dante Exum","TEAM_ID":"1610612762","PLAYER_ID":"203957","SEASON":"2019"},{"PLAYER_NAME":"Emmanuel Mudiay","TEAM_ID":"1610612762","PLAYER_ID":"1626144","SEASON":"2019"},{"PLAYER_NAME":"Georges Niang","TEAM_ID":"1610612762","PLAYER_ID":"1627777","SEASON":"2019"},{"PLAYER_NAME":"Tony Bradley","TEAM_ID":"1610612762","PLAYER_ID":"1628396","SEASON":"2019"}]
+    let allD = document.getElementById("data");
+    let data = JSON.parse(allD.innerText)
     return data;
 }
 

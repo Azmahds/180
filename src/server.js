@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const jsonData = require('/Users/gabbyjohn/180/src/output.json');
-console.log(jsonData);
 
 
 // app.get("/", function (req, res) {
@@ -10,26 +8,10 @@ console.log(jsonData);
 // });
 
 
-app.set("view engine", "ejs");
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", function (req, res) {
-  res.render("server");
-});
-
-app.get("/admin", function(req, res) {
-  res.render("admin");
-})
-
-app.listen(3000, function () {
-    console.log("Server is running on localhost3000");
-});
-
 const fs = require("fs")
 let csv = fs.readFileSync("./public/data/players.csv")
 
-async function csvTOJson(){
+function csvTOJson(){
   var array = csv.toString().split("\n");
   let result = []; 
   let headers = array[0].split(",")
@@ -57,7 +39,27 @@ async function csvTOJson(){
     result.push(obj)
   }
   let json = JSON.stringify(result);
+  let re = /\\r/g;
+  
+  json = json.replace(re, '');
+
   fs.writeFileSync('output.json', json);
 }
-
 csvTOJson();
+var users = require('./output.json'); 
+
+app.set("view engine", "ejs");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", function (req, res) {
+  res.render("server", {allUsers: JSON.stringify(users)});
+});
+
+app.get("/admin", function(req, res) {
+  res.render("admin");
+});
+
+app.listen(3000, function () {
+    console.log("Server is running on localhost3000");
+});
