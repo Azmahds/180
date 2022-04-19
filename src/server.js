@@ -8,22 +8,10 @@ const path = require("path");
 // });
 
 
-app.set("view engine", "ejs");
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", function (req, res) {
-  res.render("server");
-});
-
-app.listen(3000, function () {
-    console.log("Server is running on localhost3000");
-});
-
 const fs = require("fs")
 let csv = fs.readFileSync("./public/data/players.csv")
 
-async function csvTOJson(){
+function csvTOJson(){
   var array = csv.toString().split("\n");
   let result = []; 
   let headers = array[0].split(",")
@@ -51,7 +39,25 @@ async function csvTOJson(){
     result.push(obj)
   }
   let json = JSON.stringify(result);
+  let re = /\\r/g;
+  
+  json = json.replace(re, '');
+  
   fs.writeFileSync('output.json', json);
+  return json;
 }
 
-csvTOJson();
+var users = csvTOJson(); 
+
+app.set("view engine", "ejs");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", function (req, res) {
+  res.render("server", {allUsers: users});
+});
+
+app.listen(3000, function () {
+    console.log("Server is running on localhost3000");
+});
+
