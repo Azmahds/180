@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const jsonData = require('/Users/gabbyjohn/180/src/output.json');
+console.log(jsonData);
 
 
 // app.get("/", function (req, res) {
@@ -15,6 +17,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", function (req, res) {
   res.render("server");
 });
+
+app.get("/admin", function(req, res) {
+  res.render("admin");
+})
 
 app.listen(3000, function () {
     console.log("Server is running on localhost3000");
