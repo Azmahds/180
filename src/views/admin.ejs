@@ -44,6 +44,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-decoration: none;
   cursor: pointer;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 </style>
 </head>
 <body>
@@ -62,6 +79,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>Insert Player Data here</p>
+    <table>
+        <thead>
+            <tr>
+            <th>Player</th>
+            <th>Team ID</th>
+            <th>Player ID</th>
+            <th>Season</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            </tr>
+            </tbody>
+    </table>
   </div>
 
 </div>
