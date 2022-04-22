@@ -3,10 +3,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin</title>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The Modal (background) */
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -21,29 +29,19 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
-  background-color: beige;
+  background-color: whitesmoke;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-}
-#form_page {
-  height: 500px;
-  width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin: auto;
-
 }
 .input {
   margin: 6px;
   padding: 10px;
   display: block;
   margin: auto;
-  color: palevioletred;
+  color: black;
   font-size: 30px;
 }
 
@@ -52,17 +50,7 @@ input {
   display: block;
   margin-left: 12px;
   background: none;
-  background-color: beige;
-}
-
-#form_body {
-  border-radius: 12px;
-  height: 350px;
-  width: 450px;
-  background-color: beige;
-  border: 1px solid pink;
-  margin: auto;
-  margin-top: 12px;
+  background-color: whitesmoke;
 }
 
 /* The Close Button */
@@ -105,24 +93,41 @@ tr:nth-child(even) {
   background-color: white;
   width: 70px;
 }
+.button {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 style= "width: 300px; margin: 0 auto; margin-top: 10%;">Admin Permissions</h1>
+    <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Admin Permissions</h1>
 </div>
 
 <!-- Trigger/Open The Modal -->
-<button id="insert">Insert</button>
+<button id="insert" class="button" >Insert</button>
 
 <!-- The Modal -->
 <div id="insertModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span onclick="document.getElementById('insertModal').style.display='none'"
+      class="close">&times;
+    </span>
       <div id="insert_form_page">
         <div id="insert_form_body">
             <div id="insert_head">
@@ -150,18 +155,23 @@ tr:nth-child(even) {
             <div class="id input">
                 <input id="insert_submit" type="submit" 
                     name="submit" value="submit">
+                <span onclick="document.getElementById('insertModal').style.display='none'"
+                  class="close">&times;
+                </span>
             </div>
         </div>
       </div>
   </div>
 
 </div>
-<button id="update">Update</button>
+<button id="update" class="button">Update</button>
 
 <!-- The Update Modal -->
 <div id="updateModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span onclick="document.getElementById('updateModal').style.display='none'"
+      class="close">&times;
+    </span>
       <div id="update_form_page">
         <div id="update_form_body">
             <div id="update_head">
@@ -204,12 +214,14 @@ tr:nth-child(even) {
   </div>
 </div>
 
-<button id="delete">Delete</button>
+<button id="delete" class="button">Delete</button>
 
 <!-- The Delete Modal -->
 <div id="deleteModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span onclick="document.getElementById('deleteModal').style.display='none'"
+      class="close">&times;
+    </span>
       <div id="delete_form_page">
         <div id="delete_form_body">
             <div id="delete_head">
@@ -262,6 +274,7 @@ tr:nth-child(even) {
   }
 
   // When the user clicks on <span> (x), close the modal #HELP ME PLS
+  /*  
   span.onclick = function() {
     modal.style.display = "none";
   }
@@ -271,6 +284,7 @@ tr:nth-child(even) {
   span3.onclick = function() {
     modal3.style.display = "none";
   }
+  */
 
 
   // When the user clicks anywhere outside of the modal, close it
