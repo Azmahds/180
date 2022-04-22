@@ -59,6 +59,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
   users = require('./output.json'); 
+  console.log(users[users.length-1])
   res.render("server", {allUsers: JSON.stringify(users)});
 });
 
@@ -69,12 +70,23 @@ app.get("/admin", function(req, res) {
 
 app.post("/insert", function(req, res){
   console.log("INSERT POST CALLED");
+  var table = users;
+  //console.log(table);
   var tmp = JSON.stringify(req.body);
   let re = /\\/g;
   tmp = tmp.replace(re, '');
   var str = '[' + tmp.slice(2, tmp.length-5) + ']';
   var objs = JSON.parse(str);
-  console.log(objs)
+  console.log(objs);
+  console.log(table[0]);
+  table.push(objs[0]);
+  let json = JSON.stringify(table);
+    let le = /\\r/g;
+  
+    json = json.replace(le, '');
+
+    fs.writeFileSync('output.json', json);
+    console.log("Insert has been written");
 });
 
 app.post("/update", function(req, res){
@@ -99,14 +111,14 @@ app.post("/delete", function(req, res) {
         found = true;
         console.log("deleted")
     }
-    let json = JSON.stringify(table);
+  }
+  let json = JSON.stringify(table);
     let re = /\\r/g;
   
     json = json.replace(re, '');
 
     fs.writeFileSync('output.json', json);
     console.log("Delete has been written");
-}
 });
 /*app.get("/example", function(req, res) {
   res.render("example");
