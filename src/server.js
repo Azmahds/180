@@ -90,14 +90,22 @@ app.post("/delete", function(req, res) {
   console.log("DELETE POST CALLED");
   var tmp = JSON.stringify(req.body);
   var str = tmp.slice(4, tmp.length-7);
+  var table = users;
   console.log(str)
 
-  for(let i = 0; i < users.length; ++i) {
-    if (str == users[i].PLAYER_NAME) {
-        users.splice(i, 1)
+  for(let i = 0; i < table.length; ++i) {
+    if (str == table[i].PLAYER_NAME) {
+        table.splice(i, 1)
         found = true;
         console.log("deleted")
     }
+    let json = JSON.stringify(table);
+    let re = /\\r/g;
+  
+    json = json.replace(re, '');
+
+    fs.writeFileSync('output.json', json);
+    console.log("Delete has been written");
 }
 });
 /*app.get("/example", function(req, res) {
