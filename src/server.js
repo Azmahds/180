@@ -67,6 +67,16 @@ app.get("/admin", function(req, res) {
   res.render("admin", {allUsers: JSON.stringify(users)});
 });
 
+app.post("/insert", function(req, res){
+  console.log("INSERT POST CALLED");
+  var tmp = JSON.stringify(req.body);
+  let re = /\\/g;
+  tmp = tmp.replace(re, '');
+  var str = '[' + tmp.slice(2, tmp.length-5) + ']';
+  var objs = JSON.parse(str);
+  console.log(objs)
+});
+
 app.post("/update", function(req, res){
   console.log("UPDATE POST CALLED");
   var tmp = JSON.stringify(req.body);
