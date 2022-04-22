@@ -63,10 +63,7 @@ app.get("/admin", function(req, res) {
 });
 
 
-/*app.get("/example", function(req, res) {
-  res.render("example");
-});
-*/
+
 app.listen(3000, function () {
     console.log("Server is running on localhost3000");
 });
