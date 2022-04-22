@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const bodyParser = require('body-parser');
 
 
 // app.get("/", function (req, res) {
@@ -50,6 +51,10 @@ var users = require('./output.json');
 
 app.set("view engine", "ejs");
 
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
@@ -62,6 +67,14 @@ app.get("/admin", function(req, res) {
   res.render("admin", {allUsers: JSON.stringify(users)});
 });
 
+app.post("/update", function(req, res){
+  console.log("UPDATE POST CALLED");
+  var tmp = JSON.stringify(req.body);
+  let re = /\\/g;
+  tmp = tmp.replace(re, '');
+  var str = '[' + tmp.slice(2, tmp.length-5) + ']';
+  var objs = JSON.parse(str);
+});
 
 /*app.get("/example", function(req, res) {
   res.render("example");
