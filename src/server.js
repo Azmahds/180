@@ -85,6 +85,20 @@ app.post("/update", function(req, res){
   tmp = tmp.replace(re, '');
   var str = '[' + tmp.slice(2, tmp.length-5) + ']';
   var objs = JSON.parse(str);
+  var updated = objs[1];
+  var data = users;
+  for(let i = 0; i < data.length; ++i){
+    if(data[i].PLAYER_NAME == objs[0].PLAYER_NAME && objs[0].SEASON == data[i].SEASON){
+      data[i] = updated;
+    }
+  }
+
+  let json = JSON.stringify(data);
+  let change = /\\r/g;
+  
+  json = json.replace(change, '');
+
+  fs.writeFileSync('output.json', json);
 });
 
 app.post("/delete", function(req, res) {
@@ -107,7 +121,7 @@ app.post("/delete", function(req, res) {
 
     fs.writeFileSync('output.json', json);
     console.log("Delete has been written");
-}
+  }
 });
 /*app.get("/example", function(req, res) {
   res.render("example");
