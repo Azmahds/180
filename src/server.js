@@ -76,6 +76,20 @@ app.post("/update", function(req, res){
   var objs = JSON.parse(str);
 });
 
+app.post("/delete", function(req, res) {
+  console.log("DELETE POST CALLED");
+  var tmp = JSON.stringify(req.body);
+  var str = tmp.slice(4, tmp.length-7);
+  console.log(str)
+
+  for(let i = 0; i < users.length; ++i) {
+    if (str == users[i].PLAYER_NAME) {
+        users.splice(i, 1)
+        found = true;
+        console.log("deleted")
+    }
+}
+});
 /*app.get("/example", function(req, res) {
   res.render("example");
 });
