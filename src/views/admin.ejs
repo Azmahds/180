@@ -93,6 +93,7 @@ tr:nth-child(even) {
   background-color: white;
   width: 70px;
 }
+
 .button {
   background-color: gray;
   border: none;
@@ -103,6 +104,8 @@ tr:nth-child(even) {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
+  text-align: center;
+  margin:auto;
 }
 
 .button:hover {
@@ -155,9 +158,6 @@ tr:nth-child(even) {
             <div class="id input">
                 <input id="insert_submit" type="submit" 
                     name="submit" value="submit">
-                <span onclick="document.getElementById('insertModal').style.display='none'"
-                  class="close">&times;
-                </span>
             </div>
         </div>
       </div>
@@ -242,6 +242,28 @@ tr:nth-child(even) {
 </div>
 <p hidden id="data"><%= allUsers %></p>
 
+<div class="container">
+  <div class="col-md-12">
+      <!-- <form id="form"> -->
+          <br><input class="form-control" id="user-input" placeholder="Enter player...">
+          <button id="buttonid" class="btn btn-secondary">Find NBA Players</button><br><br>
+      <!-- </form> -->
+      <table class="table" cellpadding="10" id="table">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Player</th>
+                  <th scope="col">Team ID</th>
+                  <th scope="col">Player ID</th> 
+                  <th scope="col">Season</th>
+              </tr>
+          </thead>
+          <tbody id="body">
+          </tbody>
+      </table>
+  </div>
+  <p hidden id="data"><%= allUsers %></p>
+</div>
 
 <script>
   // Get the modal
@@ -304,6 +326,8 @@ tr:nth-child(even) {
 <script src="update.js"></script>
 <script src="delete.js"></script>
 <script src="insert.js"></script>
+<script type="module" src="csv.js"></script>  
+
 
 </body>
 </html>
