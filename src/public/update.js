@@ -1,7 +1,7 @@
-var xhr = new XMLHttpRequest();
+var xhru = new XMLHttpRequest();
 
-xhr.open("POST", '/update', true);
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhru.open("POST", '/update', true);
+xhru.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 // xhr.setRequestHeader("Content-Type", "application/json");
 
 window.addEventListener("load", (e) => {
@@ -54,6 +54,7 @@ function updateData() {
 
     var player = JSON.stringify(playerToUpdate);
     send = originalPlayer + ',' + player
-    xhr.send(send);
+    console.log("UPDATE", send);
+    xhru.send(send);
     return;
 }
