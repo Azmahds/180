@@ -123,39 +123,36 @@ tr:nth-child(even) {
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form method="post" action="./ghg.php">
-      <div id="form_page">
-        <div id="form_body">
-            <div id="head">
-                <h1 id="heading">Insert Player</h1>
+      <div id="update_form_page">
+        <div id="update_form_body">
+            <div id="update_head">
+                <h1 id="update_heading">Insert Player</h1>
             </div>
             <br />
-            <div id="input_name" class="input">
-                <input id="name" type="text" 
+            <div id="update_input_name" class="input">
+                <input id="update_name" type="text" 
                     Placeholder="Player Name" name="name">
             </div>
-            <div id="input_tid" class="input">
-                <input id="teamID" type="text" placeholder=
+            <div id="update_input_tid" class="input">
+                <input id="update_teamID" type="text" placeholder=
                     "teamID" name="Team ID">
             </div>
-            <div id="input_pid" class="input">
-                <input id="playerID" type="text" 
+            <div id="update_input_pid" class="input">
+                <input id="update_playerID" type="text" 
                     name="Player ID" 
                     placeholder="PlayerID">
             </div>
-            <div id="input_season" class="input">
-              <input id="season" type="text" 
+            <div id="update_input_season" class="input">
+              <input id="update_season" type="text" 
                   name="Season" 
                   placeholder="Season">
             </div>
             <div class="id input">
-                <input id="submit" type="submit" 
-                    name="submit" value="submit" 
-                    onclick="on_submit()">
+                <input id="update_submit" type="submit" 
+                    name="submit" value="submit">
             </div>
         </div>
       </div>
-    </form>
   </div>
 
 </div>
@@ -165,39 +162,36 @@ tr:nth-child(even) {
 <div id="updateModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form method="post" action="./ghg.php">
-      <div id="form_page">
-        <div id="form_body">
-            <div id="head">
-                <h2 id="heading">Update Player</h2>
+      <div id="update_form_page">
+        <div id="update_form_body">
+            <div id="update_head">
+                <h2 id="update_heading">Update Player</h2>
             </div>
             <br />
-            <div id="input_name" class="input">
-                <input id="name" type="text" 
+            <div id="update_input_name" class="input">
+                <input id="update_name" type="text" 
                     Placeholder="Player Name" name="name">
             </div>
-            <div id="input_tid" class="input">
-                <input id="teamID" type="text" placeholder=
+            <div id="update_input_tid" class="input">
+                <input id="update_teamID" type="text" placeholder=
                     "teamID" name="Team ID">
             </div>
-            <div id="input_pid" class="input">
-                <input id="playerID" type="text" 
+            <div id="update_input_pid" class="input">
+                <input id="update_playerID" type="text" 
                     name="Player ID" 
                     placeholder="PlayerID">
             </div>
-            <div id="input_season" class="input">
-              <input id="season" type="text" 
+            <div id="update_input_season" class="input">
+              <input id="update_season" type="text" 
                   name="Season" 
                   placeholder="Season">
             </div>
             <div class="id input">
-                <input id="submit" type="submit" 
-                    name="submit" value="submit" 
-                    onclick="on_submit()">
+                <input id="update_submit" type="submit" 
+                    name="submit" value="submit">
             </div>
         </div>
       </div>
-    </form>
   </div>
 </div>
 
@@ -207,27 +201,25 @@ tr:nth-child(even) {
 <div id="deleteModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form method="post" action="./ghg.php">
-      <div id="form_page">
-        <div id="form_body">
-            <div id="head">
-                <h3 id="heading">Delete Player</h3>
+      <div id="delete_form_page">
+        <div id="delete_form_body">
+            <div id="delete_head">
+                <h3 id="delete_heading">Delete Player</h3>
             </div>
             <br />
-            <div id="input_name" class="input">
-                <input id="name" type="text" 
+            <div id="delete_input_name" class="input">
+                <input id="delete_name" type="text" 
                     Placeholder="Player Name" name="name">
             </div>
             <div class="id input">
-                <input id="submit" type="submit" 
-                    name="submit" value="submit" 
-                    onclick="on_submit()">
+                <input id="delete_submit" type="submit" 
+                    name="submit" value="submit">
             </div>
         </div>
       </div>
-    </form>
   </div>
 </div>
+<p hidden id="data"><%= allUsers %></p>
 
 
 <script type="module" src="insert.js"></script>
@@ -287,6 +279,7 @@ tr:nth-child(even) {
   }
 
 </script>
+<script src="update.js"></script>
 
 </body>
 </html>
