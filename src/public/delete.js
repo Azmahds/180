@@ -1,8 +1,8 @@
-var xhr = new XMLHttpRequest();
-xhr.open("POST", '/delete', true);
+var xhrd = new XMLHttpRequest();
+xhrd.open("POST", '/delete', true);
 
 //Send the proper header information along with the request
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhrd.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
 
 window.addEventListener("load", (e) => {
@@ -31,7 +31,7 @@ function deleteJSON() {
     var deleted = JSON.stringify(player);
     send = deleted;
     console.log(send);
-    xhr.send(deleted);
+    xhrd.send(deleted);
     return;
 }
 
