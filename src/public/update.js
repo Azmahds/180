@@ -4,6 +4,7 @@ window.addEventListener("load", (e) => {
 })
 
 function updateData() {
-    var data = document.getElementById("data").innerText
-    console.log(data);
+    var data = JSON.parse(document.getElementById("data").innerText);
+    var playerToUpdate = document.getElementById("update_player").value;
+    console.log(playerToUpdate);
 }
