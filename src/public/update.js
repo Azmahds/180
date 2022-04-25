@@ -54,7 +54,6 @@ function updateData() {
 
     var player = JSON.stringify(playerToUpdate);
     send = originalPlayer + ',' + player
-    console.log("UPDATE", send);
     xhru.send(send);
     return;
 }
