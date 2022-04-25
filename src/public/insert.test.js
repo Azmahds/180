@@ -1,34 +1,34 @@
 
     
     test("player Incorrect String Entry", () => {
-        var val = playerName("123");
+        var val = playerName(123);
         var exp = "incorrect";
-        expect(exp).tobe(val);
+        expect(val).toBe(exp);
     });
 
     test("Correct Player Input", () => {
         var val = playerName("Jason");
         var exp = "Jason";
-        expect(val).tobe(exp);
+        expect(val).toBe(exp);
     });
 
     test("Correct TeamID Input", () => {
         var val = playerName("12345");
         var exp = "12345";
-        expect(val).tobe(exp);
+        expect(val).toBe(exp);
     });
 
     test("Incorrect Player_ID", () => {
-        var val = playerName("Jack");
+        var val = Player_ID("Jack");
         var exp = "incorrect";
-        expect(exp).tobe(val);
+        expect(val).toBe(exp);
     });
 
 
     test("Correct Overall Output", () => {
-        var val = insertDataName("Jack, 1234, 5678, 2019");
-        var exp = ("Jack, 1234, 5678, 2019");
-        expect(exp).tobe(val);
+        var val = insertDataName("Jack", "1234", "5678", "2019");
+        var exp = ("Jack", "1234", "5678", "2019");
+        expect(exp).toBe(val);
     });
 
     function playerName(val){

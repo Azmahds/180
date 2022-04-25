@@ -1,44 +1,43 @@
-const csv = getData();
+var csvData = getData();
 
 //test if all fields are missing
 test("User did not put in all fields", () => {
-    var testInput = updateData("Ben Simmons", "2019", null, null, null, null);
-    var data = csv;
-    var eOutput = data.filter(uName => uName.PLAYER_NAME == "", uTid => uTid.TEAM_ID == "", uPid => uPid.PLAYER_ID == "", uSeason => uSeason.SEASON == "");
-    expect(testInput.length).toBe(eOutput);
+    var testInput = updateData("", "2019", "Ben Simmons", null, null, null);
+    var data = csvData;
+    var eOutput = 0
+    expect(testInput).toBe(eOutput);
 });
 //testing correct version
 test("correct input", () => {
-    var testInput = updateData("Mike Conley, 2019, Mike Conley, 12345, 12345678, 2020");
-    var data = csv;
-    var eOutput = data.filter(uName => uName.PLAYER_NAME == "Mike Conley", uTid => uTid.TEAM_ID == "12345", uPid => uPid.PLAYER_ID == "12345678", uSeason => uSeason.SEASON == "2020");
-    expect(testInput.length).toBe(eOutput);
+    var testInput = updateData("Mike Conley", "2019", "Mike Conley", "12345", "12345678", "2019");
+    var data = csvData;
+    var eOutput = data.filter(val => val.PLAYER_NAME == "Mike Conley" && val.SEASON == "2019")[0];
+    expect(testInput).toBe(eOutput);
     
 });
 
 //test if player does not exist
 test("Player does not exist", () => {
-    var testInput = updateData("Kobe James, 2012, Kobe James, 12345, 12345678, 2015");
-    var data = csv;
-    var eOutput = data.filter(uName => uName.PLAYER_NAME == "Kobe James", uTid => uTid.TEAM_ID == "12345", uPid => uPid.PLAYER_ID == "12345678", uSeason => uSeason.SEASON == "2015");
-    expect(testInput.length).toBe(eOutput);
+    var testInput = updateData("Kobe James", "2012", "Kobe James", "12345", "12345678", "2015");
+    var data = csvData;
+    var eOutput = 1;
+    expect(testInput).toBe(eOutput);
 });
 
 function updateData(oldName, oldSeason, nName, nTid, nPid, newSeason) {
-    const csvData = getData();
     var updatePlayer = oldName;
     var updateSeason = oldSeason;
     if(updatePlayer == "" || updateSeason == ""){
-        alert("NEED TO ADD PLAYER NAME TO UPDATE\n NEED TO ADD PLAYER SEASON TO UPDATE");
-        return;
+        //alert("NEED TO ADD PLAYER NAME TO UPDATE\n NEED TO ADD PLAYER SEASON TO UPDATE");
+        return 0;
     } 
     
     var playerToUpdate = csvData.filter(element => element.PLAYER_NAME == updatePlayer && updateSeason == element.SEASON)[0];
     var originalPlayer = JSON.stringify(playerToUpdate);
     
     if(!playerToUpdate){
-        alert("Player not found!");
-        return;
+        //alert("Player not found!");
+        return 1;
     }
     var nName = nName;
     var nTID = nTid;
@@ -46,8 +45,8 @@ function updateData(oldName, oldSeason, nName, nTid, nPid, newSeason) {
     var nSeason = newSeason;
     
     if(nName == "" && nTID == "" && nPID == "" && nSeason == ""){
-        alert("Nothing to update!")
-        return;
+        //alert("Nothing to update!")
+        return 2;
     }
 
     if(nName != ""){
@@ -63,9 +62,8 @@ function updateData(oldName, oldSeason, nName, nTid, nPid, newSeason) {
         playerToUpdate.SEASON = nSeason;
     }
     
-    var player = JSON.stringify(playerToUpdate);
-    send = originalPlayer + ',' + player
-    return player;
+   
+    return playerToUpdate;
 }
 function getData() {
     return [{"PLAYER_NAME":"Royce O'Neale","TEAM_ID":"1610612762","PLAYER_ID":"1626220","SEASON":"2019"},{"PLAYER_NAME":"Bojan Bogdanovic","TEAM_ID":"1610612762","PLAYER_ID":"202711","SEASON":"2019"},{"PLAYER_NAME":"Rudy Gobert","TEAM_ID":"1610612762","PLAYER_ID":"203497","SEASON":"2019"},{"PLAYER_NAME":"Donovan Mitchell","TEAM_ID":"1610612762","PLAYER_ID":"1628378","SEASON":"2019"},{"PLAYER_NAME":"Mike Conley","TEAM_ID":"1610612762","PLAYER_ID":"201144","SEASON":"2019"},{"PLAYER_NAME":"Joe Ingles","TEAM_ID":"1610612762","PLAYER_ID":"204060","SEASON":"2019"},{"PLAYER_NAME":"Ed Davis","TEAM_ID":"1610612762","PLAYER_ID":"202334","SEASON":"2019"},{"PLAYER_NAME":"Jeff Green","TEAM_ID":"1610612762","PLAYER_ID":"201145","SEASON":"2019"},{"PLAYER_NAME":"Dante Exum","TEAM_ID":"1610612762","PLAYER_ID":"203957","SEASON":"2019"},{"PLAYER_NAME":"Emmanuel Mudiay","TEAM_ID":"1610612762","PLAYER_ID":"1626144","SEASON":"2019"},{"PLAYER_NAME":"Georges Niang","TEAM_ID":"1610612762","PLAYER_ID":"1627777","SEASON":"2019"},{"PLAYER_NAME":"Tony Bradley","TEAM_ID":"1610612762","PLAYER_ID":"1628396","SEASON":"2019"},{"PLAYER_NAME":"Nigel Williams-Goss","TEAM_ID":"1610612762","PLAYER_ID":"1628430","SEASON":"2019"},{"PLAYER_NAME":"Tobias Harris","TEAM_ID":"1610612755","PLAYER_ID":"202699","SEASON":"2019"},{"PLAYER_NAME":"Al Horford","TEAM_ID":"1610612755","PLAYER_ID":"201143","SEASON":"2019"},{"PLAYER_NAME":"Joel Embiid","TEAM_ID":"1610612755","PLAYER_ID":"203954","SEASON":"2019"},{"PLAYER_NAME":"Furkan Korkmaz","TEAM_ID":"1610612755","PLAYER_ID":"1627788","SEASON":"2019"},{"PLAYER_NAME":"Ben Simmons","TEAM_ID":"1610612755","PLAYER_ID":"1627732","SEASON":"2019"},{"PLAYER_NAME":"James Ennis III","TEAM_ID":"1610612755","PLAYER_ID":"203516","SEASON":"2019"},{"PLAYER_NAME":"Mike Scott","TEAM_ID":"1610612755","PLAYER_ID":"203118","SEASON":"2019"},{"PLAYER_NAME":"Raul Neto","TEAM_ID":"1610612755","PLAYER_ID":"203526","SEASON":"2019"},{"PLAYER_NAME":"Matisse Thybulle","TEAM_ID":"1610612755","PLAYER_ID":"1629680","SEASON":"2019"},{"PLAYER_NAME":"Shake Milton","TEAM_ID":"1610612755","PLAYER_ID":"1629003","SEASON":"2019"},{"PLAYER_NAME":"Kyle O'Quinn","TEAM_ID":"1610612755","PLAYER_ID":"203124","SEASON":"2019"},{"PLAYER_NAME":"Norvel Pelle","TEAM_ID":"1610612755","PLAYER_ID":"203658","SEASON":"2019"},{"PLAYER_NAME":"Kevin Knox II","TEAM_ID":"1610612752","PLAYER_ID":"1628995","SEASON":"2019"},{"PLAYER_NAME":"Julius Randle","TEAM_ID":"1610612752","PLAYER_ID":"203944","SEASON":"2019"},{"PLAYER_NAME":"Taj Gibson","TEAM_ID":"1610612752","PLAYER_ID":"201959","SEASON":"2019"},{"PLAYER_NAME":"RJ Barrett","TEAM_ID":"1610612752","PLAYER_ID":"1629628","SEASON":"2019"},{"PLAYER_NAME":"Dennis Smith Jr.","TEAM_ID":"1610612752","PLAYER_ID":"1628372","SEASON":"2019"},{"PLAYER_NAME":"Wayne Ellington","TEAM_ID":"1610612752","PLAYER_ID":"201961","SEASON":"2019"},{"PLAYER_NAME":"Mitchell Robinson","TEAM_ID":"1610612752","PLAYER_ID":"1629011","SEASON":"2019"},{"PLAYER_NAME":"Damyean Dotson","TEAM_ID":"1610612752","PLAYER_ID":"1628422","SEASON":"2019"},{"PLAYER_NAME":"Bobby Portis","TEAM_ID":"1610612752","PLAYER_ID":"1626171","SEASON":"2019"},{"PLAYER_NAME":"Allonzo Trier","TEAM_ID":"1610612752","PLAYER_ID":"1629019","SEASON":"2019"},{"PLAYER_NAME":"Ignas Brazdeikis","TEAM_ID":"1610612752","PLAYER_ID":"1629649","SEASON":"2019"},{"PLAYER_NAME":"Kadeem Allen","TEAM_ID":"1610612752","PLAYER_ID":"1628443","SEASON":"2019"},{"PLAYER_NAME":"Khris Middleton","TEAM_ID":"1610612749","PLAYER_ID":"203114","SEASON":"2019"},{"PLAYER_NAME":"Giannis Antetokounmpo","TEAM_ID":"1610612749","PLAYER_ID":"203507","SEASON":"2019"},{"PLAYER_NAME":"Robin Lopez","TEAM_ID":"1610612749","PLAYER_ID":"201577","SEASON":"2019"},{"PLAYER_NAME":"Wesley Matthews","TEAM_ID":"1610612749","PLAYER_ID":"202083","SEASON":"2019"},{"PLAYER_NAME":"Eric Bledsoe","TEAM_ID":"1610612749","PLAYER_ID":"202339","SEASON":"2019"},{"PLAYER_NAME":"Donte DiVincenzo","TEAM_ID":"1610612749","PLAYER_ID":"1628978","SEASON":"2019"},{"PLAYER_NAME":"Ersan Ilyasova","TEAM_ID":"1610612749","PLAYER_ID":"101141","SEASON":"2019"},{"PLAYER_NAME":"Pat Connaughton","TEAM_ID":"1610612749","PLAYER_ID":"1626192","SEASON":"2019"},{"PLAYER_NAME":"George Hill","TEAM_ID":"1610612749","PLAYER_ID":"201588","SEASON":"2019"},{"PLAYER_NAME":"D.J. Wilson","TEAM_ID":"1610612749","PLAYER_ID":"1628391","SEASON":"2019"},{"PLAYER_NAME":"Kyle Korver","TEAM_ID":"1610612749","PLAYER_ID":"2594","SEASON":"2019"},{"PLAYER_NAME":"Dragan Bender","TEAM_ID":"1610612749","PLAYER_ID":"1627733","SEASON":"2019"},{"PLAYER_NAME":"Thanasis Antetokounmpo","TEAM_ID":"1610612749","PLAYER_ID":"203648","SEASON":"2019"},{"PLAYER_NAME":"Kris Dunn","TEAM_ID":"1610612741","PLAYER_ID":"1627739","SEASON":"2019"},{"PLAYER_NAME":"Lauri Markkanen","TEAM_ID":"1610612741","PLAYER_ID":"1628374","SEASON":"2019"},{"PLAYER_NAME":"Wendell Carter Jr.","TEAM_ID":"1610612741","PLAYER_ID":"1628976","SEASON":"2019"},{"PLAYER_NAME":"Zach LaVine","TEAM_ID":"1610612741","PLAYER_ID":"203897","SEASON":"2019"},{"PLAYER_NAME":"Tomas Satoransky","TEAM_ID":"1610612741","PLAYER_ID":"203107","SEASON":"2019"},{"PLAYER_NAME":"Coby White","TEAM_ID":"1610612741","PLAYER_ID":"1629632","SEASON":"2019"},{"PLAYER_NAME":"Thaddeus Young","TEAM_ID":"1610612741","PLAYER_ID":"201152","SEASON":"2019"},{"PLAYER_NAME":"Ryan Arcidiacono","TEAM_ID":"1610612741","PLAYER_ID":"1627853","SEASON":"2019"},{"PLAYER_NAME":"Denzel Valentine","TEAM_ID":"1610612741","PLAYER_ID":"1627756","SEASON":"2019"},{"PLAYER_NAME":"Daniel Gafford","TEAM_ID":"1610612741","PLAYER_ID":"1629655","SEASON":"2019"},{"PLAYER_NAME":"Shaquille Harrison","TEAM_ID":"1610612741","PLAYER_ID":"1627885","SEASON":"2019"},{"PLAYER_NAME":"Luke Kornet","TEAM_ID":"1610612741","PLAYER_ID":"1628436","SEASON":"2019"},{"PLAYER_NAME":"Max Strus","TEAM_ID":"1610612741","PLAYER_ID":"1629622","SEASON":"2019"},{"PLAYER_NAME":"Harrison Barnes","TEAM_ID":"1610612758","PLAYER_ID":"203084","SEASON":"2019"},{"PLAYER_NAME":"Nemanja Bjelica","TEAM_ID":"1610612758","PLAYER_ID":"202357","SEASON":"2019"},{"PLAYER_NAME":"Richaun Holmes","TEAM_ID":"1610612758","PLAYER_ID":"1626158","SEASON":"2019"},{"PLAYER_NAME":"Buddy Hield","TEAM_ID":"1610612758","PLAYER_ID":"1627741","SEASON":"2019"},{"PLAYER_NAME":"Cory Joseph","TEAM_ID":"1610612758","PLAYER_ID":"202709","SEASON":"2019"},{"PLAYER_NAME":"Bogdan Bogdanovic","TEAM_ID":"1610612758","PLAYER_ID":"203992","SEASON":"2019"},{"PLAYER_NAME":"Justin James","TEAM_ID":"1610612758","PLAYER_ID":"1629713","SEASON":"2019"},{"PLAYER_NAME":"Trevor Ariza","TEAM_ID":"1610612758","PLAYER_ID":"2772","SEASON":"2019"},{"PLAYER_NAME":"Dewayne Dedmon","TEAM_ID":"1610612758","PLAYER_ID":"203473","SEASON":"2019"},{"PLAYER_NAME":"Yogi Ferrell","TEAM_ID":"1610612758","PLAYER_ID":"1627812","SEASON":"2019"},{"PLAYER_NAME":"Harry Giles III","TEAM_ID":"1610612758","PLAYER_ID":"1628385","SEASON":"2019"},{"PLAYER_NAME":"Kyle Guy","TEAM_ID":"1610612758","PLAYER_ID":"1629657","SEASON":"2019"},{"PLAYER_NAME":"Caleb Swanigan","TEAM_ID":"1610612758","PLAYER_ID":"1628403","SEASON":"2019"},{"PLAYER_NAME":"Kelly Oubre Jr.","TEAM_ID":"1610612756","PLAYER_ID":"1626162","SEASON":"2019"},{"PLAYER_NAME":"Dario Saric","TEAM_ID":"1610612756","PLAYER_ID":"203967","SEASON":"2019"},{"PLAYER_NAME":"Frank Kaminsky","TEAM_ID":"1610612756","PLAYER_ID":"1626163","SEASON":"2019"},{"PLAYER_NAME":"Devin Booker","TEAM_ID":"1610612756","PLAYER_ID":"1626164","SEASON":"2019"},{"PLAYER_NAME":"Ricky Rubio","TEAM_ID":"1610612756","PLAYER_ID":"201937","SEASON":"2019"},{"PLAYER_NAME":"Mikal Bridges","TEAM_ID":"1610612756","PLAYER_ID":"1628969","SEASON":"2019"},{"PLAYER_NAME":"Ty Jerome","TEAM_ID":"1610612756","PLAYER_ID":"1629660","SEASON":"2019"},{"PLAYER_NAME":"Cameron Johnson","TEAM_ID":"1610612756","PLAYER_ID":"1629661","SEASON":"2019"},{"PLAYER_NAME":"Jevon Carter","TEAM_ID":"1610612756","PLAYER_ID":"1628975","SEASON":"2019"},{"PLAYER_NAME":"Aron Baynes","TEAM_ID":"1610612756","PLAYER_ID":"203382","SEASON":"2019"},{"PLAYER_NAME":"Tyler Johnson","TEAM_ID":"1610612756","PLAYER_ID":"204020","SEASON":"2019"},{"PLAYER_NAME":"Elie Okobo","TEAM_ID":"1610612756","PLAYER_ID":"1629059","SEASON":"2019"},{"PLAYER_NAME":"Miles Bridges","TEAM_ID":"1610612766","PLAYER_ID":"1628970","SEASON":"2019"},{"PLAYER_NAME":"P.J. Washington","TEAM_ID":"1610612766","PLAYER_ID":"1629023","SEASON":"2019"},{"PLAYER_NAME":"Bismack Biyombo","TEAM_ID":"1610612766","PLAYER_ID":"202687","SEASON":"2019"},{"PLAYER_NAME":"Devonte' Graham","TEAM_ID":"1610612766","PLAYER_ID":"1628984","SEASON":"2019"},{"PLAYER_NAME":"Terry Rozier","TEAM_ID":"1610612766","PLAYER_ID":"1626179","SEASON":"2019"},{"PLAYER_NAME":"Nicolas Batum","TEAM_ID":"1610612766","PLAYER_ID":"201587","SEASON":"2019"},{"PLAYER_NAME":"Cody Zeller","TEAM_ID":"1610612766","PLAYER_ID":"203469","SEASON":"2019"},{"PLAYER_NAME":"Marvin Williams","TEAM_ID":"1610612766","PLAYER_ID":"101107","SEASON":"2019"},{"PLAYER_NAME":"Malik Monk","TEAM_ID":"1610612766","PLAYER_ID":"1628370","SEASON":"2019"},{"PLAYER_NAME":"Dwayne Bacon","TEAM_ID":"1610612766","PLAYER_ID":"1628407","SEASON":"2019"},{"PLAYER_NAME":"Willy Hernangomez","TEAM_ID":"1610612766","PLAYER_ID":"1626195","SEASON":"2019"},{"PLAYER_NAME":"Michael Kidd-Gilchrist","TEAM_ID":"1610612766","PLAYER_ID":"203077","SEASON":"2019"},{"PLAYER_NAME":"T.J. Warren","TEAM_ID":"1610612754","PLAYER_ID":"203933","SEASON":"2019"},{"PLAYER_NAME":"Domantas Sabonis","TEAM_ID":"1610612754","PLAYER_ID":"1627734","SEASON":"2019"},{"PLAYER_NAME":"Myles Turner","TEAM_ID":"1610612754","PLAYER_ID":"1626167","SEASON":"2019"},{"PLAYER_NAME":"Jeremy Lamb","TEAM_ID":"1610612754","PLAYER_ID":"203087","SEASON":"2019"},{"PLAYER_NAME":"Malcolm Brogdon","TEAM_ID":"1610612754","PLAYER_ID":"1627763","SEASON":"2019"},{"PLAYER_NAME":"Justin Holiday","TEAM_ID":"1610612754","PLAYER_ID":"203200","SEASON":"2019"},{"PLAYER_NAME":"Aaron Holiday","TEAM_ID":"1610612754","PLAYER_ID":"1628988","SEASON":"2019"},
