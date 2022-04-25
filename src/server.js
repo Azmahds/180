@@ -60,7 +60,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
   users = require('./output.json'); 
-  console.log(users[users.length-1])
   res.render("server", {allUsers: JSON.stringify(users)});
 });
 
@@ -72,14 +71,11 @@ app.get("/admin", function(req, res) {
 app.post("/insert", function(req, res){
   console.log("INSERT POST CALLED");
   var table = users;
-  //console.log(table);
   var tmp = JSON.stringify(req.body);
   let re = /\\/g;
   tmp = tmp.replace(re, '');
   var str = '[' + tmp.slice(2, tmp.length-5) + ']';
   var objs = JSON.parse(str);
-  console.log(objs);
-  console.log(table[0]);
   table.push(objs[0]);
   let json = JSON.stringify(table);
     let le = /\\r/g;
@@ -87,7 +83,6 @@ app.post("/insert", function(req, res){
     json = json.replace(le, '');
 
     fs.writeFileSync('output.json', json);
-    console.log("Insert has been written");
 });
 
 app.post("/update", function(req, res){
@@ -118,13 +113,11 @@ app.post("/delete", function(req, res) {
   var tmp = JSON.stringify(req.body);
   var str = tmp.slice(4, tmp.length-7);
   var table = users;
-  console.log(str)
 
   for(let i = 0; i < table.length; ++i) {
     if (str == table[i].PLAYER_NAME) {
         table.splice(i, 1)
         found = true;
-        console.log("deleted")
     }
   }
   let json = JSON.stringify(table);
@@ -133,7 +126,6 @@ app.post("/delete", function(req, res) {
     json = json.replace(re, '');
 
     fs.writeFileSync('output.json', json);
-    console.log("Delete has been written");
   });
 /*app.get("/example", function(req, res) {
   res.render("example");
