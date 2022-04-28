@@ -100,17 +100,18 @@ tr:nth-child(even) {
 }
 
 .button {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
   background-color: gray;
   border: none;
   color: white;
   padding: 15px 32px;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   border-radius: 12px;
-  margin:auto;
 }
+
 .button2 {
   background-color: white;
   border: none;
@@ -135,11 +136,11 @@ tr:nth-child(even) {
 <body>
 
 <div class="container">
-    <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Admin Permissions</h1>
+    <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Admin Permissions</h1><br>
 </div>
 
 <!-- Trigger/Open The Modal -->
-<button id="insert" class="button" >Insert</button>
+<button id="insert" class="button" style="margin-right: 20px;">Insert</button>
 
 <!-- The Modal -->
 <div id="insertModal" class="modal">
@@ -182,7 +183,7 @@ tr:nth-child(even) {
   </div>
 
 </div>
-<button id="update" class="button">Update</button>
+<button id="update" class="button" style="margin-right: 20px;">Update</button>
 
 <!-- The Update Modal -->
 <div id="updateModal" class="modal">
@@ -232,7 +233,7 @@ tr:nth-child(even) {
   </div>
 </div>
 
-<button id="delete" class="button">Delete</button>
+<button id="delete" class="button" style="margin-right: 20px;">Delete</button>
 
 <!-- The Delete Modal -->
 <div id="deleteModal" class="modal">
