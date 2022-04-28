@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
   res.render("server", {allUsers: JSON.stringify(users)});
 });
 
-app.get("/admin", function(req, res) {
+app.get("/admin/players", function(req, res) {
   users = require('./players.json'); 
   res.render("admin", {allUsers: JSON.stringify(users)});
 });
