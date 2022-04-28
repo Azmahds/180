@@ -46,22 +46,30 @@ function csvTOJson(){
   fs.writeFileSync('players.json', json);
 }
 csvTOJson();
-var users = require('./players.json'); 
 
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
+
+app.get("/", function (req, res) {
+  var users = require('./players.json'); 
+  res.render("server", {allUsers: JSON.stringify(users)});
+});
+
 app.get("/players", function (req, res) {
-  res.render("server_players", {allUsers: JSON.stringify(users)});
+  var user = require('./players.json'); 
+  res.render("server", {allUsers: JSON.stringify(user)});
 });
 
 app.get("/games", function (req, res) {
-  res.render("server_games", {allUsers: JSON.stringify(users)});
+  var games = require('./games.json');
+  res.render("server_games", {allUsers: JSON.stringify(teams)});
 });
 
-app.get("/admin", function(req, res) {
-  res.render("admin");
+app.get("/admin/players", function(req, res) {
+  var user = require('./players.json'); 
+  res.render("players", {allUsers: JSON.stringify(user)});
 });
 
 app.listen(3000, function () {
