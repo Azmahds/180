@@ -6,7 +6,7 @@ window.addEventListener("load", (event) =>{
 })
 
 function getData(){
-    let allD = document.getElementById("data");
+    let allD = document.getElementById("gamesData");
     let data = JSON.parse(allD.innerText)
     return data;
 }
@@ -49,8 +49,8 @@ function filterGD(){
     var cnt = 0;
     for (let i = 0; i < data.length; i++) {
         // let player = [data[i].PLAYER_NAME, data[i].TEAM_ID, data[i].PLAYER_ID, data[i].SEASON];
-        let player = data[i].PLAYER_NAME
-        if(!contains(player.toLowerCase(), input.toLowerCase())){
+        let team = data[i].TEAM_ID
+        if(team != input){
             rows[i].hidden = true;
             continue;
         }
@@ -58,18 +58,4 @@ function filterGD(){
         var number = rows[i].children[0];
         number.innerHTML = ++cnt;
     }
-}
-
-function contains(tar, substr){
-    for(let i = 0; i < tar.length; ++i){
-        if(tar[i] == substr[0]){
-            for(let j = 0; j < substr.length; ++j){
-                if(tar[i+j] != substr[j]){
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-    return false
 }
