@@ -1,6 +1,6 @@
 var xhr1 = new XMLHttpRequest();
 
-xhr1.open("POST", '/insert', true);
+xhr1.open("POST", '/insertPlayer', true);
 xhr1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 // xhr.setRequestHeader("Content-Type", "application/json");
 
