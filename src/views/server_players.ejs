@@ -4,9 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href=”https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity=”sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T” crossorigin=”anonymous”>
+        <!-- <link rel="stylesheet" href=”https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity=”sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T” crossorigin=”anonymous”> -->
         <title>NBA Players</title>
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+        <!-- <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
@@ -15,6 +15,24 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <style>
             body {background-color: beige;}
+
+            .arrow {
+                border: solid black;
+                border-width: 0 1px 1px 0;
+                display: inline-block;
+                padding: 2px;
+
+                }
+
+            .up {
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+            }
+
+            .down {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
         </style>
     </head>
     <body>
@@ -30,11 +48,11 @@
                 <table class="table" cellpadding="10" id="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Player</th>
-                            <th scope="col">Team ID</th>
-                            <th scope="col">Player ID</th> 
-                            <th scope="col">Season</th>
+                            <th scope="col" id="Col1">#</th>
+                            <th scope="col" id="Col2">Player</th>
+                            <th scope="col" id="Col3">Team ID</th>
+                            <th scope="col" id="Col4">Player ID</th> 
+                            <th scope="col" id="Col5">Season</th>
                         </tr>
                     </thead>
                     <tbody id="body">
@@ -44,5 +62,6 @@
             <p hidden id="data"><%= allUsers %></p>
         </div>
         <script type="module" src="filterPlayer.js"></script>
+        <script src="filterColumns.js"></script>
     </body>
 </html>

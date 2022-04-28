@@ -140,8 +140,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", function (req, res) {
-  var users = require('./players.json'); 
-  res.render("server", {allUsers: JSON.stringify(users)});
+  users = require('./players.json'); 
+  res.render("server_players", {allUsers: JSON.stringify(users)});
 });
 
 app.get("/players", function (req, res) {
