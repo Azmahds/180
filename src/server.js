@@ -60,7 +60,7 @@ app.get("/", function (req, res) {
 
 app.get("/admin/players", function(req, res) {
   users = require('./players.json'); 
-  res.render("admin", {allUsers: JSON.stringify(users)});
+  res.render("players", {allUsers: JSON.stringify(users)});
 });
 
 app.post("/insert", function(req, res){
