@@ -4,11 +4,6 @@ const path = require("path");
 const bodyParser = require('body-parser');
 
 
-// app.get("/", function (req, res) {
-//   res.sendFile(__dirname + "/index.html");
-// });
-
-
 const fs = require("fs")
 let csv = fs.readFileSync("./public/data/players.csv")
 
@@ -44,10 +39,10 @@ function csvTOJson(){
   
   json = json.replace(re, '');
 
-  fs.writeFileSync('output.json', json);
+  fs.writeFileSync('players.json', json);
 }
 csvTOJson();
-var users = require('./output.json'); 
+var users = require('./players.json'); 
 
 app.set("view engine", "ejs");
 
@@ -59,12 +54,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", function (req, res) {
-  users = require('./output.json'); 
+  users = require('./players.json'); 
   res.render("server", {allUsers: JSON.stringify(users)});
 });
 
-app.get("/admin", function(req, res) {
-  users = require('./output.json'); 
+app.get("/admin/players", function(req, res) {
+  users = require('./players.json'); 
   res.render("admin", {allUsers: JSON.stringify(users)});
 });
 
@@ -82,7 +77,7 @@ app.post("/insert", function(req, res){
   
     json = json.replace(le, '');
 
-    fs.writeFileSync('output.json', json);
+    fs.writeFileSync('players.json', json);
 });
 
 app.post("/update", function(req, res){
@@ -105,7 +100,7 @@ app.post("/update", function(req, res){
   
   json = json.replace(change, '');
 
-  fs.writeFileSync('output.json', json);
+  fs.writeFileSync('players.json', json);
 });
 
 app.post("/delete", function(req, res) {
@@ -125,7 +120,7 @@ app.post("/delete", function(req, res) {
   
     json = json.replace(re, '');
 
-    fs.writeFileSync('output.json', json);
+    fs.writeFileSync('players.json', json);
   });
 /*app.get("/example", function(req, res) {
   res.render("example");
