@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href=”https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity=”sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T” crossorigin=”anonymous”>
+        <title>NBA Players</title>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <style>
+            body {background-color: beige;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-md-12">
+                <h1 class=>Find Players</h1>
+                <h2 class=>Enter the name of a Player</h2>
+                <img src="https://phantom-marca.unidadeditorial.es/ee46d7a1c09b447117f8e83c6e131f31/resize/1320/f/jpg/assets/multimedia/imagenes/2022/02/02/16437899001758.jpg" alt="NBA" width="350" height="230">
+                <!-- <form id="form"> -->
+                    <input class="form-control" id="user-input" placeholder="Enter player...">
+                    <button id="buttonid" class="btn btn-secondary">Find NBA Players</button>
+                <!-- </form> -->
+                <table class="table" cellpadding="10" id="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Player</th>
+                            <th scope="col">Team ID</th>
+                            <th scope="col">Player ID</th> 
+                            <th scope="col">Season</th>
+                        </tr>
+                    </thead>
+                    <tbody id="body">
+                    </tbody>
+                </table>
+            </div>
+            <p hidden id="data"><%= allUsers %></p>
+        </div>
+        <script type="module" src="filterPlayer.js"></script>
+    </body>
+</html>

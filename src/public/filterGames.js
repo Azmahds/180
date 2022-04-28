@@ -2,7 +2,7 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     createTable();
-    document.getElementById("buttonid").addEventListener("click", () => filterPlayer())
+    document.getElementById("buttonid").addEventListener("click", () => filterGD())
 })
 
 function getData(){
@@ -30,7 +30,7 @@ function createTable(){
     }
 }
 
-function filterPlayer(){
+function filterGD(){
     var data = getData();
     let input = document.getElementById("user-input").value;
     var table = document.getElementById("body");

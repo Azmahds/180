@@ -1,6 +1,6 @@
 var xhru = new XMLHttpRequest();
 
-xhru.open("POST", '/update', true);
+xhru.open("POST", '/updatePlayer', true);
 xhru.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 // xhr.setRequestHeader("Content-Type", "application/json");
 
