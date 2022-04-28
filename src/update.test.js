@@ -1,3 +1,4 @@
+//calls function to get all data from CSV file
 var csvData = getData();
 
 //test if all fields are missing
