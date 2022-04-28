@@ -44,6 +44,92 @@ function csvTOJson(){
 csvTOJson();
 var users = require('./players.json'); 
 
+
+let csv2 = fs.readFileSync("./public/data/games.csv")
+function csvTOJsonForGames(){
+  var array = csv2.toString().split("\n");
+  let result = []; 
+  let headers = array[0].split(",")
+ 
+  for (let i = 1; i < array.length - 1; i++) {
+  let obj = {}
+  let str = array[i]
+  let s = ''
+  
+  let flag = 0
+  for (let ch of str) {
+      if (ch === '"' && flag === 0) {
+      flag = 1
+      }
+      else if (ch === '"' && flag == 1) flag = 0
+      if (ch === ',' && flag === 0) ch = '|'
+      if (ch !== '"') s += ch
+    }
+    
+    let properties = s.split("|")
+
+    for (let j in headers) {
+      obj[headers[j]] = properties[j]
+    }
+    result.push(obj)
+  }
+  let json = JSON.stringify(result);
+  let re = /\\r/g;
+  
+  json = json.replace(re, '');
+
+  fs.writeFileSync('games.json', json);
+}
+
+csvTOJsonForGames();
+var users_games = require('./games.json'); 
+//-------------------------------------------------
+
+let csv3 = fs.readFileSync("./public/data/teams.csv")
+function csvTOJsonForTeams(){
+  var array = csv3.toString().split("\n");
+  let result = []; 
+  let headers = array[0].split(",")
+ 
+  for (let i = 1; i < array.length - 1; i++) {
+  let obj = {}
+  let str = array[i]
+  let s = ''
+  
+  let flag = 0
+  for (let ch of str) {
+      if (ch === '"' && flag === 0) {
+      flag = 1
+      }
+      else if (ch === '"' && flag == 1) flag = 0
+      if (ch === ',' && flag === 0) ch = '|'
+      if (ch !== '"') s += ch
+    }
+    
+    let properties = s.split("|")
+
+    for (let j in headers) {
+      obj[headers[j]] = properties[j]
+    }
+    result.push(obj)
+  }
+  let json = JSON.stringify(result);
+  let re = /\\r/g;
+  
+  json = json.replace(re, '');
+
+  fs.writeFileSync('teams.json', json);
+}
+
+csvTOJsonForTeams();
+var users_teams = require('./teams.json'); 
+
+//-------------------------------------------------------------
+
+
+
+
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -76,7 +162,7 @@ app.post("/insertPlayer", function(req, res){
     let le = /\\r/g;
   
     json = json.replace(le, '');
-
+    console.log(json[5000])
     fs.writeFileSync('players.json', json);
 });
 
