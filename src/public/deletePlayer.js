@@ -1,5 +1,5 @@
 var xhrd = new XMLHttpRequest();
-xhrd.open("POST", '/delete', true);
+xhrd.open("POST", '/deletePlayer', true);
 
 //Send the proper header information along with the request
 xhrd.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -146,10 +146,10 @@ app.get("/", function (req, res) {
 
 app.get("/admin/players", function(req, res) {
   users = require('./players.json'); 
-  res.render("admin", {allUsers: JSON.stringify(users)});
+  res.render("players", {allUsers: JSON.stringify(users)});
 });
 
-app.post("/insert", function(req, res){
+app.post("/insertPlayer", function(req, res){
   console.log("INSERT POST CALLED");
   var table = users;
   var tmp = JSON.stringify(req.body);
@@ -166,7 +166,7 @@ app.post("/insert", function(req, res){
     fs.writeFileSync('players.json', json);
 });
 
-app.post("/update", function(req, res){
+app.post("/updatePlayer", function(req, res){
   console.log("UPDATE POST CALLED");
   var tmp = JSON.stringify(req.body);
   let re = /\\/g;
@@ -189,7 +189,7 @@ app.post("/update", function(req, res){
   fs.writeFileSync('players.json', json);
 });
 
-app.post("/delete", function(req, res) {
+app.post("/deletePlayer", function(req, res) {
   console.log("DELETE POST CALLED");
   var tmp = JSON.stringify(req.body);
   var str = tmp.slice(4, tmp.length-7);

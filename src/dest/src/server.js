@@ -52,8 +52,12 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function (req, res) {
-  res.render("server", {allUsers: JSON.stringify(users)});
+app.get("/players", function (req, res) {
+  res.render("server_players", {allUsers: JSON.stringify(users)});
+});
+
+app.get("/games", function (req, res) {
+  res.render("server_games", {allUsers: JSON.stringify(users)});
 });
 
 app.get("/admin", function(req, res) {
