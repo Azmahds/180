@@ -4,11 +4,6 @@ const path = require("path");
 const bodyParser = require('body-parser');
 
 
-// app.get("/", function (req, res) {
-//   res.sendFile(__dirname + "/index.html");
-// });
-
-
 const fs = require("fs")
 let csv = fs.readFileSync("./public/data/players.csv")
 
