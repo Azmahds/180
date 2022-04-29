@@ -121,6 +121,21 @@ function match() {
     else if(homeID == 1610612758 || awayID == 1610612758) {
         teamName = "SAC";
     }
+    else if(homeID == 1610612739 || awayID == 1610612739) {
+        teamName = "CLE";
+    }
+    else if(homeID == 1610612749 || awayID == 1610612749) {
+        teamName = "MIL";
+    }
+    else if(homeID == 1610612761 || awayID == 1610612761) {
+        teamName = "TOR";
+    }
+    else if(homeID == 1610612752 || awayID == 1610612752) {
+        teamName = "NYK";
+    }
+    
+
+    
 
 
 }
