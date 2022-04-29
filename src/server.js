@@ -227,8 +227,41 @@ function MET(){
   else if(homeID == 1610612758 || awayID == 1610612758) {
       teamName = "SAC";
   }
+  else if(homeID == 1610612760 || awayID == 1610612760) {
+      teamName = "OKC";
+  }
+  else if(homeID == 1610612764 || awayID == 1610612764) {
+      teamName = "WAS";
+  }
+  else if(homeID == 1610612766 || awayID == 1610612766) {
+      teamName = "CHA";
+  }
+  else if(homeID == 1610612742 || awayID == 1610612742) {
+      teamName = "DAL";
+  }
+  else if(homeID == 1610612749 || awayID == 1610612749) {
+      teamName = "MIL";
+  }
+  else if(homeID == 1610612752 || awayID == 1610612752) {
+      teamName = "NYK";
+  }
+  else if(homeID == 1610612754 || awayID == 1610612754) {
+      teamName = "IND";
+  }
+  else if(homeID == 1610612759 || awayID == 1610612759) {
+      teamName = "SAS";
+  }
+  else if(homeID == 1610612761 || awayID == 1610612761) {
+      teamName = "TOR";
+  }
+  else if(homeID == 1610612763 || awayID == 1610612763) {
+      teamName = "MEM";
+  }
+  else if(homeID == 1610612739 || awayID == 1610612739) {
+      teamName = "CLE";
+  }
 
-  return teamName;
+  console.log(teamName);
 }
 
 
@@ -249,9 +282,25 @@ app.get("/", function (req, res) {
   res.render("server_players", {allUsers: JSON.stringify(users)});
 });
 
+app.get("/players", function (req, res) {
+  var user = require('./players.json'); 
+  res.render("server", {allUsers: JSON.stringify(user)});
+});
+
+app.get("/games", function (req, res) {
+  console.log("TEST");
+  var games = require('./games.json');
+  res.render("server_games", {allUsers: JSON.stringify(games)});
+});
+
 app.get("/admin/players", function(req, res) {
-  users = require('./players.json'); 
-  res.render("players", {allUsers: JSON.stringify(users)});
+  var user = require('./players.json'); 
+  res.render("players", {allUsers: JSON.stringify(user)});
+});
+
+app.get("/admin/games", function(req, res) {
+  var user = require('./games.json'); 
+  res.render("games", {allUsers: JSON.stringify(user)});
 });
 
 app.post("/insertPlayer", function(req, res){
