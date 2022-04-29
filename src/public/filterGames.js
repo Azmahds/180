@@ -59,3 +59,68 @@ function filterGD(){
         number.innerHTML = ++cnt;
     }
 }
+function match() {
+    var homeID;
+    var awayID
+    var teamName;
+
+    if(homeID == 1610612738 || awayID == 1610612738) {
+        teamName = "BOS";
+    }
+    else if(homeID == 1610612748 || awayID == 1610612748) {
+        teamName = "MIA";
+    }
+    else if(homeID == 1610612740 || awayID == 1610612740) {
+        teamName = "NOP";
+    }
+    else if(homeID == 1610612745 || awayID == 1610612745) {
+        teamName = "HOU";
+    }
+    else if(homeID == 1610612737 || awayID == 1610612737) {
+        teamName = "ATL";
+    }
+    else if(homeID == 1610612751 || awayID == 1610612751) {
+        teamName = "BKN";
+    }
+    else if(homeID == 1610612765 || awayID == 1610612765) {
+        teamName = "DET";
+    }
+    else if(homeID == 1610612744 || awayID == 1610612744) {
+        teamName = "GSW";
+    }
+    else if(homeID == 1610612747 || awayID == 1610612747) {
+        teamName = "LAL";
+    }
+    else if(homeID == 1610612750 || awayID == 1610612750) {
+        teamName = "MIN";
+    }
+    else if(homeID == 1610612753 || awayID == 1610612753) {
+        teamName = "ORL";
+    }
+    else if(homeID == 1610612755 || awayID == 1610612755) {
+        teamName = "PHI";
+    }
+    else if(homeID == 1610612762 || awayID == 1610612762) {
+        teamName = "UTA";
+    }
+    else if(homeID == 1610612746 || awayID == 1610612746) {
+        teamName = "LAC";
+    }
+    else if(homeID == 1610612741 || awayID == 1610612741) {
+        teamName = "CHI";
+    }
+    else if(homeID == 1610612743 || awayID == 1610612743) {
+        teamName = "DEN";
+    }
+    else if(homeID == 1610612756 || awayID == 1610612756) {
+        teamName = "PHX";
+    }
+    else if(homeID == 1610612757 || awayID == 1610612757) {
+        teamName = "POR";
+    }
+    else if(homeID == 1610612758 || awayID == 1610612758) {
+        teamName = "SAC";
+    }
+
+
+}
