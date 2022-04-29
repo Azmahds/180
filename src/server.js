@@ -161,7 +161,8 @@ app.get("/admin/players", function(req, res) {
 
 app.get("/admin/games", function(req, res) {
   var user = require('./games.json'); 
-  res.render("games", {allUsers: JSON.stringify(user)});
+  //var bestOffensiveTeams = //call function that returns array of team ranking
+  res.render("games", {allUsers: JSON.stringify(user)}); //change {allUsers: JSON.stringify(user)} to {allUsers: JSON.stringify(user), bestTeam: bestOffensiveTeam} 
 });
 
 app.post("/insertPlayer", function(req, res){
