@@ -131,6 +131,11 @@ tr:nth-child(even) {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+select {
+    width: 500px;
+    height: 30px;
+}
+
 </style>
 </head>
 <body>
@@ -179,12 +184,18 @@ tr:nth-child(even) {
     </table>
   </div>
 </div>
-        <input class="form-control" id="user-input" placeholder="Enter player...">
+        <!-- <input class="form-control" id="user-input1" placeholder="Enter player..."> -->
+        <br/>
+        <select id="user-input">
+            <option value="AllTeams">All Teams</option>
+            <!-- more options populated here from filterGames.js -->
+        </select>
         <button id="buttonid" class="btn btn-secondary">Find NBA Players</button>
         <!-- </form> -->
-        <table class="table" cellpadding="10" id="table">
+        <table class="table" cellpadding="10" id="table" style="margin-left: -25%;">
             <thead>
                 <tr>
+                    <th scope="col"># </th>
                     <th scope="col">HOME_TEAM_ID</th>
                     <th scope="col">VISITOR_TEAM_ID</th>
                     <th scope="col">PTS_home</th>
@@ -234,7 +245,7 @@ tr:nth-child(even) {
 <script src="updateGame_Details.js"></script>
 <script src="deleteGame_Details.js"></script>
 <script src="insertGame_Details.js"></script>
-<script type="module" src="filterGames.js"></script>  
+<script type="module" all_data="<%= allUsers %>" src="filterGames.js"></script>  
 
 
 </body>
