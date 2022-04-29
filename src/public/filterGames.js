@@ -1,7 +1,7 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     populateOptions();
-    createTable();
+    // createTable();
     document.getElementById("buttonid").addEventListener("click", () => filterGD())
 })
 
