@@ -59,7 +59,7 @@ function filterGD(){
         number.innerHTML = ++cnt;
     }
 }
-function match() {
+function match(int) {
     var homeID;
     var awayID
     var teamName;
@@ -121,12 +121,27 @@ function match() {
     else if(homeID == 1610612758 || awayID == 1610612758) {
         teamName = "SAC";
     }
+<<<<<<< HEAD
     else if(homeID == 1610612739 || awayID == 1610612739) {
         teamName = "CLE";
+=======
+    else if(homeID == 1610612760 || awayID == 1610612760) {
+        teamName = "OKC";
+    }
+    else if(homeID == 1610612764 || awayID == 1610612764) {
+        teamName = "WAS";
+    }
+    else if(homeID == 1610612766 || awayID == 1610612766) {
+        teamName = "CHA";
+    }
+    else if(homeID == 1610612742 || awayID == 1610612742) {
+        teamName = "DAL";
+>>>>>>> 0eef519ab801e79f8d8e58b1c316d0b0978f5c37
     }
     else if(homeID == 1610612749 || awayID == 1610612749) {
         teamName = "MIL";
     }
+<<<<<<< HEAD
     else if(homeID == 1610612761 || awayID == 1610612761) {
         teamName = "TOR";
     }
@@ -137,5 +152,25 @@ function match() {
 
     
 
+=======
+    else if(homeID == 1610612752 || awayID == 1610612752) {
+        teamName = "NYK";
+    }
+    else if(homeID == 1610612754 || awayID == 1610612754) {
+        teamName = "IND";
+    }
+    else if(homeID == 1610612759 || awayID == 1610612759) {
+        teamName = "SAS";
+    }
+    else if(homeID == 1610612761 || awayID == 1610612761) {
+        teamName = "TOR";
+    }
+    else if(homeID == 1610612763 || awayID == 1610612763) {
+        teamName = "MEM";
+    }
+    else if(homeID == 1610612739 || awayID == 1610612739) {
+        teamName = "CLE";
+    }
+>>>>>>> 0eef519ab801e79f8d8e58b1c316d0b0978f5c37
 
 }
