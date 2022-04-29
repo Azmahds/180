@@ -288,7 +288,6 @@ app.get("/players", function (req, res) {
 });
 
 app.get("/games", function (req, res) {
-  console.log("TEST");
   var games = require('./games.json');
   res.render("server_games", {allUsers: JSON.stringify(games)});
 });
