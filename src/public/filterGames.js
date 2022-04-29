@@ -3,6 +3,7 @@ window.addEventListener("load", (event) =>{
     populateOptions();
     // createTable();
     document.getElementById("buttonid").addEventListener("click", () => filterGD())
+    document.getElementById("efficient").addEventListener("click", () => efficientTeamsTable());
 })
 
 function getData(){
@@ -18,7 +19,6 @@ function populateOptions(){
     var data = getData();
     data.forEach(element => {
         if(options.indexOf(element.HOME_TEAM_ID) == -1){
-            console.log("push")
             options.push(element.HOME_TEAM_ID);
         }
     });
@@ -78,6 +78,20 @@ function filterGD(){
         var number = rows[i].children[0];
         number.innerHTML = ++cnt;
     }
+}
+
+function efficientTeamsTable(){
+    var met = document.getElementById("MET").innerHTML;
+    var table = document.getElementById("ebody");
+
+    //eventually make this in a for loop with all rankings but for now its only one entry
+
+    var row = table.insertRow(-1);
+    var cell = row.insertCell(0);
+    cell.innerHTML = 1;
+
+    cell = row.insertCell(1);
+    cell.innerHTML = match(met);
 }
 
 function match(id) {
