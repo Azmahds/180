@@ -159,6 +159,10 @@ app.get("/admin/players", function(req, res) {
   res.render("players", {allUsers: JSON.stringify(user)});
 });
 
+app.get("/admin/games", function(req, res) {
+  var user = require('./games.json'); 
+  res.render("games", {allUsers: JSON.stringify(user)});
+});
 
 app.post("/insertPlayer", function(req, res){
   console.log("INSERT POST CALLED");
