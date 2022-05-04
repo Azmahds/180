@@ -195,6 +195,11 @@ app.get("/games", function (req, res) {
   res.render("server_games", {allUsers: JSON.stringify(games), bestTeam: met});
 });
 
+app.get("/consistent", function (req, res) {
+  var user = require('./players.json'); 
+  res.render("consistent", {allUsers: JSON.stringify(user)});
+});
+
 app.get("/admin/players", function(req, res) {
   var user = require('./players.json'); 
   res.render("players", {allUsers: JSON.stringify(user)});
