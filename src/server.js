@@ -159,11 +159,13 @@ app.get("/admin/players", function(req, res) {
   res.render("players", {allUsers: JSON.stringify(user)});
 });
 
+/*
 app.get("/admin/games", function(req, res) {
   var user = require('./games.json'); 
   //var bestOffensiveTeams = //call function that returns array of team ranking
   res.render("games", {allUsers: JSON.stringify(user)}); //change {allUsers: JSON.stringify(user)} to {allUsers: JSON.stringify(user), bestTeam: bestOffensiveTeam} 
 });
+*/
 
 app.post("/insertPlayer", function(req, res){
   console.log("INSERT POST CALLED");

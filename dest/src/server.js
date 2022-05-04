@@ -43,10 +43,10 @@ function csvTOJson(){
   
   json = json.replace(re, '');
 
-  fs.writeFileSync('output.json', json);
+  fs.writeFileSync('players.json', json);
 }
 csvTOJson();
-var users = require('./output.json'); 
+var users = require('./players.json'); 
 
 app.set("view engine", "ejs");
 
