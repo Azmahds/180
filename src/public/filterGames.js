@@ -1,16 +1,13 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     populateOptions();
-    // createTable();
-    document.getElementById("buttonid").addEventListener("click", () => filterGD())
+    document.getElementById("buttonid").addEventListener("click", () => filterGD());
     document.getElementById("efficient").addEventListener("click", () => efficientTeamsTable());
 })
 
 function getData(){
     let allD = document.getElementById("gamesData");
-    let data = JSON.parse(allD.innerText)
-    // var this_js_script = $('script[src*=filterGames]'); //get data passed through from script
-    // var data = JSON.parse(this_js_script.attr('all_data'));
+    let data = JSON.parse(allD.innerText);
     return data;
 }
 
