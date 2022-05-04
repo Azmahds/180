@@ -126,8 +126,48 @@ var users_teams = require('./teams.json');
 
 //-------------------------------------------------------------
 
+function MET(){
+  const map1 = new Map();
+  
+  for(let i = 0; i < users_games.length; i++){
+    var points_home = parseFloat(users_games[i].PTS_home);
+    var rebounds_home = parseFloat(users_games[i].REB_home);
+    var assists_home = parseFloat(users_games[i].AST_home);
 
+    var points_away = parseFloat(users_games[i].PTS_away);
+    var rebounds_away = parseFloat(users_games[i].REB_away);
+    var assists_away = parseFloat(users_games[i].AST_away);
 
+    if (isNaN(points_home)) points_home = 0;
+    if (isNaN(rebounds_home)) rebounds_home = 0;
+    if (isNaN(assists_home)) assists_home = 0;
+
+    if (isNaN(points_away)) points_away = 0;
+    if (isNaN(rebounds_away)) rebounds_away = 0;
+    if (isNaN(assists_away)) assists_away = 0;
+
+    if(map1.has(users_games[i].HOME_TEAM_ID)){
+      map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+points_home+rebounds_home+assists_home);
+      //console.log("This is the team with the best eff: " + map1.get('1610612748'));
+    }
+    else{
+      map1.set(users_games[i].HOME_TEAM_ID, points_home+rebounds_home+assists_home);
+    }
+
+    if(map1.has(users_games[i].TEAM_ID_away)){
+      map1.set(users_games[i].TEAM_ID_away, parseFloat(map1.get(users_games[i].TEAM_ID_away))+points_away+rebounds_away+assists_away);
+     // console.log("This is the team with the best eff: " + map1.get('1610612748'));
+    }
+    else{
+      map1.set(users_games[i].TEAM_ID_away, points_away+rebounds_away+assists_away);
+    }
+
+    
+  }
+  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+
+  return homeID;
+}
 
 
 app.set("view engine", "ejs");
@@ -151,7 +191,13 @@ app.get("/players", function (req, res) {
 
 app.get("/games", function (req, res) {
   var games = require('./games.json');
-  res.render("server_games", {allUsers: JSON.stringify(games)});
+  var met = MET();
+  res.render("server_games", {allUsers: JSON.stringify(games), bestTeam: met});
+});
+
+app.get("/consistent", function (req, res) {
+  var user = require('./players.json'); 
+  res.render("consistent", {allUsers: JSON.stringify(user)});
 });
 
 app.get("/admin/players", function(req, res) {
