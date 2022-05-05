@@ -144,7 +144,7 @@ select {
         </div>
 
 <!-- Trigger/Open The Modal -->
-<button id="home" class="button" style="margin-left: 30px;">Most Home Wins</button>
+<button id="home" class="button" style="margin-left: 500px;">Most Home Wins</button>
 
 <!-- The Modal -->
 <div id="homeModal" class="modal">
@@ -176,8 +176,38 @@ select {
     </table>
   </div>
 </div>
+
+<button id="away" class="button" style="margin-left: 30px;">Most Away Wins</button>
+
+<!-- The Update Modal -->
+<div id="awayModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+      <div id="away_form_page">
+        <div id="away_form_body">
+            <div id="away_head">
+                <h2 id="away_heading">Most Away Wins</h2>
+            </div>
+            <br />
+        </div>
+      </div>
+      <table class="table" cellpadding="10" id="etable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Team Name</th>
+                <th scope="col">Team ID</th>
+                <th scope="col">Away Wins</th>
+            </tr>
+        </thead>
+        <tbody id="ebody">
+        </tbody>
+    </table>
+  </div>
+</div>
         
     <p hidden id="data"><%= allUsers %></p>
+    
 </div>
 
         <script>
@@ -189,19 +219,28 @@ select {
           
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
-            
+            var span2 = document.getElementsByClassName("close")[0];
+
+            var modal2 = document.getElementById("awayModal");
+            var btn2 = document.getElementById("away");
             // When the user clicks the button, open the modal 
             btn.onclick = function() {
               modal.style.display = "block";
             }
-            
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
               if (event.target == modal) {
                 modal.style.display = "none";
               }
+              if (event.target == modal2) {
+                modal2.style.display = "none";
+              }
             }
           </script>
         <script type="module" src="filterPlayer.js"></script>
+        
     </body>
 </html>
