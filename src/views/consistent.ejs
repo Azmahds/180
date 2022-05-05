@@ -140,12 +140,11 @@ select {
 </head>
 <body>
     <div class="container">
-        <div class="col-md-12">
         <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Most Consistent Team</h1><br>
 
 <!-- Trigger/Open The Modal -->
-        <button id="home" class="button" style="margin-left: 45px;">Most Home Wins</button>
-        <button id="away" class="button">Most Away Wins</button>
+        <button id="home" class="button">Most Home Wins</button>
+
 
 
         <!-- The Modal -->
@@ -178,6 +177,8 @@ select {
                 </table>
             </div>
         </div>
+
+        <button id="away" class="button">Most Away Wins</button>
         <div id="AwayModal" class="modal">
 
             <!-- Modal content -->
@@ -227,9 +228,11 @@ select {
         <script>
             // Get the modal
             var modal = document.getElementById("homeModal");
+            var modal2 = document.getElementById("AwayModal");
           
             // Get the button that opens the modal
             var btn = document.getElementById("home");
+            var btn2 = document.getElementById("away");
           
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
@@ -238,13 +241,19 @@ select {
             btn.onclick = function() {
               modal.style.display = "block";
             }
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
             
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == modal2) {
+                  modal2.style.display = "none";
+                }
               }
-            }
           </script>
         <script type="module" src="filterConsistent.js"></script>
     </body>
