@@ -1,32 +1,25 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
-    populateOptions();
-    document.getElementById("buttonid").addEventListener("click", () => filterGD());
-    document.getElementById("efficient").addEventListener("click", () => consistentTeamsTable());
+    let allD = document.getElementById("allData");
+    getData(allD);
+    getData(document.getElementById("homeData"));
+    getData(document.getElementById("awayData"));
+    // document.getElementById("buttonid").addEventListener("click", () => filterGD());
+    // document.getElementById("efficient").addEventListener("click", () => consistentTeamsTable());
 })
 
-function getData(){
-    let allD = document.getElementById("gamesData");
-    let data = JSON.parse(allD.innerText);
-    return data;
-}
+function getData(passedData){ // home, away, or all data
+    var dataString = passedData.innerText.split(',');
+    var data = [];
 
-function populateOptions(){
-    let options = [];
-    var data = getData();
-    data.forEach(element => {
-        if(options.indexOf(element.HOME_TEAM_ID) == -1){
-            options.push(element.HOME_TEAM_ID);
+    for(let i = 0; i < dataString.length; ++i){
+        if(i % 2 == 0){
+            var combinedData = [dataString[i], dataString[i+1]];
+            data.push(combinedData)
         }
-    });
-    let select = document.getElementById("user-input");
-
-    options.forEach(el => {
-        var option = document.createElement("option");
-        option.value = el;
-        option.text = match(el);
-        select.add(option);
-    });
+    }
+    console.log(data)
+    return data;
 }
 
 function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
