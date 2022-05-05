@@ -169,6 +169,41 @@ function MET(){
   return homeID;
 }
 
+function mostConsistent(){ //FIXME
+  const map2 = new Map();
+
+  
+  for(let i = 0; i < users_games.length; i++){
+    var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+    var away_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+
+    if (away_wins == 1){
+      away_wins = 0;
+    }
+    else{
+      away_wins = 1;
+    }
+
+    if (isNaN(home_wins)) home_wins = 0;
+    if (isNaN(away_wins)) away_wins = 0;
+        
+    if(map2.has(users_games[i].HOME_TEAM_ID) || map2.has(users_games[i].VISITOR_TEAM_ID)){
+      map2.set(users_games[i].HOME_TEAM_ID, (parseFloat(map2.get(users_games[i].HOME_TEAM_ID))+ home_wins) + (parseFloat(map2.get(users_games[i].VISTOR_TEAM_ID))+ away_wins));
+    }
+    else{
+      map2.set(users_games[i].HOME_TEAM_ID, home_wins + away_wins);
+    }
+
+
+    
+  }
+  var conID = [...map2.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+
+  console.log(map2);
+}
+
+mostConsistent();
+
 function mostHomeWins(){
   const map1 = new Map();
   
@@ -190,6 +225,7 @@ function mostHomeWins(){
   }
   var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
 
+  console.log(map1);
   console.log(homeID);
 }
 
@@ -201,28 +237,32 @@ function mostAwayWins(){
   
   
   for(let i = 0; i < users_games.length; i++){
-    var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+    var away_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
 
-    if(home_wins == 0){
-      home_wins = 1;
-    }
-  
-    if (isNaN(home_wins)) home_wins = 0;
-
-    
-    if(map1.has(users_games[i].HOME_TEAM_ID)){
-      map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+ home_wins);
+    if(away_wins == 0){
+      away_wins = 1;
     }
     else{
-      map1.set(users_games[i].HOME_TEAM_ID, home_wins);
+      away_wins = 0;
+    }
+  
+    if (isNaN(away_wins)) away_wins = 0;
+
+    
+    if(map1.has(users_games[i].VISITOR_TEAM_ID)){
+      map1.set(users_games[i].VISITOR_TEAM_ID, parseFloat(map1.get(users_games[i].VISITOR_TEAM_ID))+ away_wins);
+    }
+    else{
+      map1.set(users_games[i].VISITOR_TEAM_ID, away_wins);
     }
 
 
     
   }
-  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+  var awayID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
 
-  console.log(homeID);
+  console.log(map1);
+  console.log(awayID);
 }
 
 mostAwayWins();
