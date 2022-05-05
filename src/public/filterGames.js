@@ -82,6 +82,7 @@ function filterGD(){
 
 function efficientTeamsTable(){
     var met = document.getElementById("MET").innerHTML;
+    var pic = document.getElementById("GSW").innerHTML;
     var table = document.getElementById("ebody");
 
     //eventually make this in a for loop with all rankings but for now its only one entry
@@ -92,6 +93,13 @@ function efficientTeamsTable(){
 
     cell = row.insertCell(1);
     cell.innerHTML = match(met);
+    var img = document.createElement("img");
+    img = new Image(100,100);
+    img.src = "https://1000logos.net/wp-content/uploads/2018/01/golden-state-warriors-new-logo.jpg";
+    cell = row.insertCell(2);
+    cell.appendChild(img);
+    
+
 }
 
 function match(id) {
@@ -100,6 +108,7 @@ function match(id) {
 
     if(teamID == 1610612738) {
         teamName = "BOS";
+
     }
     else if(teamID == 1610612748) {
         teamName = "MIA";
@@ -192,3 +201,4 @@ function match(id) {
 
     return teamName;
 }
+
