@@ -169,6 +169,64 @@ function MET(){
   return homeID;
 }
 
+function mostHomeWins(){
+  const map1 = new Map();
+  
+  
+  for(let i = 0; i < users_games.length; i++){
+    var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+  
+    if (isNaN(home_wins)) home_wins = 0;
+    
+    if(map1.has(users_games[i].HOME_TEAM_ID)){
+      map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+ home_wins);
+    }
+    else{
+      map1.set(users_games[i].HOME_TEAM_ID, home_wins);
+    }
+
+
+    
+  }
+  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+
+  console.log(homeID);
+}
+
+mostHomeWins();
+
+
+function mostAwayWins(){
+  const map1 = new Map();
+  
+  
+  for(let i = 0; i < users_games.length; i++){
+    var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+
+    if(home_wins == 0){
+      home_wins = 1;
+    }
+  
+    if (isNaN(home_wins)) home_wins = 0;
+
+    
+    if(map1.has(users_games[i].HOME_TEAM_ID)){
+      map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+ home_wins);
+    }
+    else{
+      map1.set(users_games[i].HOME_TEAM_ID, home_wins);
+    }
+
+
+    
+  }
+  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+
+  console.log(homeID);
+}
+
+mostAwayWins();
+
 
 app.set("view engine", "ejs");
 
@@ -195,15 +253,16 @@ app.get("/games", function (req, res) {
   res.render("server_games", {allUsers: JSON.stringify(games), bestTeam: met});
 });
 
+app.get("/consistent", function (req, res) { //most consistent team page
+  var user = require('./players.json'); 
+  res.render("consistent", {allUsers: JSON.stringify(user)});
+});
+
 app.get("/admin/players", function(req, res) {
   var user = require('./players.json'); 
   res.render("players", {allUsers: JSON.stringify(user)});
 });
 
-app.get("/admin/games", function(req, res) {
-  var user = require('./games.json'); 
-  res.render("games", {allUsers: JSON.stringify(user)});
-});
 
 app.post("/insertPlayer", function(req, res){
   console.log("INSERT POST CALLED");
@@ -264,10 +323,6 @@ app.post("/deletePlayer", function(req, res) {
 
     fs.writeFileSync('players.json', json);
   });
-/*app.get("/example", function(req, res) {
-  res.render("example");
-});
-*/
 
 app.listen(3000, function () {
     console.log("Server is running on localhost3000");
