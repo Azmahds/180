@@ -1,13 +1,16 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     populateOptions();
-    document.getElementById("buttonid").addEventListener("click", () => filterGD());
+    // createTable();
+    document.getElementById("buttonid").addEventListener("click", () => filterGD())
     document.getElementById("efficient").addEventListener("click", () => efficientTeamsTable());
 })
 
 function getData(){
     let allD = document.getElementById("gamesData");
-    let data = JSON.parse(allD.innerText);
+    let data = JSON.parse(allD.innerText)
+    // var this_js_script = $('script[src*=filterGames]'); //get data passed through from script
+    // var data = JSON.parse(this_js_script.attr('all_data'));
     return data;
 }
 
@@ -75,4 +78,116 @@ function filterGD(){
         var number = rows[i].children[0];
         number.innerHTML = ++cnt;
     }
+}
+
+function efficientTeamsTable(){
+    var met = document.getElementById("MET").innerHTML;
+    var table = document.getElementById("ebody");
+
+    //eventually make this in a for loop with all rankings but for now its only one entry
+
+    var row = table.insertRow(-1);
+    var cell = row.insertCell(0);
+    cell.innerHTML = 1;
+
+    cell = row.insertCell(1);
+    cell.innerHTML = match(met);
+}
+
+function match(id) {
+    var teamID = id;
+    var teamName = "N/A";
+
+    if(teamID == 1610612738) {
+        teamName = "BOS";
+    }
+    else if(teamID == 1610612748) {
+        teamName = "MIA";
+    }
+    else if(teamID == 1610612740) {
+        teamName = "NOP";
+    }
+    else if(teamID == 1610612745) {
+        teamName = "HOU";
+    }
+    else if(teamID == 1610612737) {
+        teamName = "ATL";
+    }
+    else if(teamID == 1610612751) {
+        teamName = "BKN";
+    }
+    else if(teamID == 1610612765) {
+        teamName = "DET";
+    }
+    else if(teamID == 1610612744) {
+        teamName = "GSW";
+    }
+    else if(teamID == 1610612747) {
+        teamName = "LAL";
+    }
+    else if(teamID == 1610612750) {
+        teamName = "MIN";
+    }
+    else if(teamID == 1610612753) {
+        teamName = "ORL";
+    }
+    else if(teamID == 1610612755) {
+        teamName = "PHI";
+    }
+    else if(teamID == 1610612762) {
+        teamName = "UTA";
+    }
+    else if(teamID == 1610612746) {
+        teamName = "LAC";
+    }
+    else if(teamID == 1610612741) {
+        teamName = "CHI";
+    }
+    else if(teamID == 1610612743) {
+        teamName = "DEN";
+    }
+    else if(teamID == 1610612756) {
+        teamName = "PHX";
+    }
+    else if(teamID == 1610612757) {
+        teamName = "POR";
+    }
+    else if(teamID == 1610612758) {
+        teamName = "SAC";
+    }
+    else if(teamID == 1610612760) {
+        teamName = "OKC";
+    }
+    else if(teamID == 1610612764) {
+        teamName = "WAS";
+    }
+    else if(teamID == 1610612766) {
+        teamName = "CHA";
+    }
+    else if(teamID == 1610612742) {
+        teamName = "DAL";
+    }
+    else if(teamID == 1610612749) {
+        teamName = "MIL";
+    }
+    else if(teamID == 1610612752) {
+        teamName = "NYK";
+    }
+    else if(teamID == 1610612754) {
+        teamName = "IND";
+    }
+    else if(teamID == 1610612759) {
+        teamName = "SAS";
+    }
+    else if(teamID == 1610612761) {
+        teamName = "TOR";
+    }
+    else if(teamID == 1610612763) {
+        teamName = "MEM";
+    }
+    else if(teamID == 1610612739) {
+        teamName = "CLE";
+    }
+
+    return teamName;
 }
