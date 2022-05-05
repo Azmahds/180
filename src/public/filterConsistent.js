@@ -2,8 +2,8 @@ window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     let allD = document.getElementById("allData");
     getData(allD);
-    getData(document.getElementById("homeData"));
-    getData(document.getElementById("awayData"));
+    // getData(document.getElementById("homeData"));
+    // getData(document.getElementById("awayData"));
     // document.getElementById("buttonid").addEventListener("click", () => filterGD());
     // document.getElementById("efficient").addEventListener("click", () => consistentTeamsTable());
 })
