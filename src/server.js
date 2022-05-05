@@ -269,8 +269,10 @@ app.get("/games", function (req, res) {
 });
 
 app.get("/consistent", function (req, res) { //most consistent team page
-  var user = require('./players.json'); 
-  res.render("consistent", {allUsers: JSON.stringify(user)});
+  var home = mostHomeWins();
+  var away = mostAwayWins();
+  var all = mostConsistent();
+  res.render("consistent", {home: home, away: away, all: all});
 });
 
 app.get("/admin/players", function(req, res) {
