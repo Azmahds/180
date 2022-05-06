@@ -212,6 +212,7 @@ function teamlogo(teamName) {
     }
     else if(teamID == "MIA") {
         teamName = "MIA";
+        
     }
     else if(teamID == "NOP") {
         teamName = "NOP";
