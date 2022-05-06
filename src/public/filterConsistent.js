@@ -1,11 +1,6 @@
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
-    let allD = document.getElementById("allData");
-    getData(allD);
-    // getData(document.getElementById("homeData"));
-    // getData(document.getElementById("awayData"));
-    // document.getElementById("buttonid").addEventListener("click", () => filterGD());
-    // document.getElementById("efficient").addEventListener("click", () => consistentTeamsTable());
+    createTable();
 })
 
 function getData(passedData){ // home, away, or all data
@@ -18,24 +13,47 @@ function getData(passedData){ // home, away, or all data
             data.push(combinedData)
         }
     }
-    console.log(data)
     return data;
 }
 
 function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
-    var data = getData();
-    var table = document.getElementById("body");
-    
-    for (let i = 0; i < data.length; i++) {
-        let player = [data[i].HOME_TEAM_ID, data[i].VISITOR_TEAM_ID, data[i].HOME_TEAM_WINS]; //FIXME
-        var row = table.insertRow(-1);
-        for(let j = 0; j < player.length + 1; ++j){
-            var cell = row.insertCell(j);
-            if(j == 0){
-                cell.innerHTML = i + 1;
-            }
-            else{
-                cell.innerHTML = player[j-1];
+    var all = getData(document.getElementById("allData"));
+    var home = getData(document.getElementById("homeData"));
+    var away = getData(document.getElementById("awayData"));
+
+    var data;
+
+    for(let tableNum = 0; tableNum < 3; ++tableNum){
+        var table;
+        if(tableNum == 0){
+            table = document.getElementById("body");
+            data = all;
+        }
+        else if(tableNum == 1){
+            table = document.getElementById("hbody");
+            data = home;
+        }
+        else{
+            table = document.getElementById("abody");
+            data = away;
+        }
+        
+        for (let i = 0; i < data.length; i++) {
+            let player =  data[i];
+            var row = table.insertRow(-1);
+            var pidx = 0;
+            for(let j = 0; j < 4; ++j){
+                var cell = row.insertCell(j);
+                if(j == 0){
+                    cell.innerHTML = i + 1;
+                }
+                else if(j == 1){
+                    cell.innerHTML = match(player[0])
+                }
+                else{
+                    cell.innerHTML = player[pidx];
+                    ++pidx;
+                }
             }
         }
     }

@@ -196,11 +196,11 @@ function mostHomeWins(){
 
   var sortedArr = Array.from(map1);
   sortedArr.sort(function(a,b) {
-    const n1 = a[0];
-    const n2 = b[0];
+    const n1 = a[1];
+    const n2 = b[1];
 
-    if(n1 < n2){return -1;}
-    else if(n1 > n2){return 1;}
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
     else{return 0;}
   });
 
@@ -232,11 +232,11 @@ function mostAwayWins(){
   }
   var sortedArr = Array.from(map1);
   sortedArr.sort(function(a,b) {
-    const n1 = a[0];
-    const n2 = b[0];
+    const n1 = a[1];
+    const n2 = b[1];
 
-    if(n1 < n2){return -1;}
-    else if(n1 > n2){return 1;}
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
     else{return 0;}
   });
   return sortedArr;
