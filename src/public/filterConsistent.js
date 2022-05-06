@@ -54,6 +54,7 @@ function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
                     cell.innerHTML = player[pidx];
                     ++pidx;
                 }
+                cell.style = "text-align: center"
             }
         }
     }
