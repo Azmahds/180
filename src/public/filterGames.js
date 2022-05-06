@@ -92,8 +92,8 @@ function efficientTeamsTable(){
     cell.innerHTML = 1;
 
     cell = row.insertCell(1);
-    cell.innerHTML = match(met);
     var img = document.createElement("img");
+    cell.innerHTML = match(met);
     img = new Image(100,100);
     img.src = "https://1000logos.net/wp-content/uploads/2018/01/golden-state-warriors-new-logo.jpg";
     cell = row.insertCell(2);
@@ -105,10 +105,10 @@ function efficientTeamsTable(){
 function match(id) {
     var teamID = id;
     var teamName = "N/A";
-
+    
     if(teamID == 1610612738) {
         teamName = "BOS";
-
+        
     }
     else if(teamID == 1610612748) {
         teamName = "MIA";
@@ -196,6 +196,106 @@ function match(id) {
         teamName = "MEM";
     }
     else if(teamID == 1610612739) {
+        teamName = "CLE";
+    }
+
+    return teamName;
+}
+
+
+function teamlogo(teamName) {
+    var teamID = teamName;
+    img.src= "";
+    
+    if(teamID == "BOS") {
+       img.src = "https://logos-world.net/wp-content/uploads/2020/05/Boston-Celtics-emblem.jpg";
+    }
+    else if(teamID == "MIA") {
+        teamName = "MIA";
+    }
+    else if(teamID == "NOP") {
+        teamName = "NOP";
+    }
+    else if(teamID == "HOU") {
+        teamName = "HOU";
+    }
+    else if(teamID == "ATL") {
+        teamName = "ATL";
+    }
+    else if(teamID == "BKN") {
+        teamName = "BKN";
+    }
+    else if(teamID == "DET") {
+        teamName = "DET";
+    }
+    else if(teamID == "GSW") {
+        teamName = "GSW";
+    }
+    else if(teamID == "LAL") {
+        teamName = "LAL";
+    }
+    else if(teamID == "MIN") {
+        teamName = "MIN";
+    }
+    else if(teamID == "ORL") {
+        teamName = "ORL";
+    }
+    else if(teamID == "PHI") {
+        teamName = "PHI";
+    }
+    else if(teamID == "UTA") {
+        teamName = "UTA";
+    }
+    else if(teamID == "LAC") {
+        teamName = "LAC";
+    }
+    else if(teamID == "CHI") {
+        teamName = "CHI";
+    }
+    else if(teamID == "DEN") {
+        teamName = "DEN";
+    }
+    else if(teamID == "PHX") {
+        teamName = "PHX";
+    }
+    else if(teamID == "POR") {
+        teamName = "POR";
+    }
+    else if(teamID == "SAC") {
+        teamName = "SAC";
+    }
+    else if(teamID == "OKC") {
+        teamName = "OKC";
+    }
+    else if(teamID == "WAS") {
+        teamName = "WAS";
+    }
+    else if(teamID == "CHA") {
+        teamName = "CHA";
+    }
+    else if(teamID == "DAL") {
+        teamName = "DAL";
+
+    }
+    else if(teamID == "MIL") {
+        teamName = "MIL";
+    }
+    else if(teamID == "NYK") {
+        teamName = "NYK";
+    }
+    else if(teamID == "IND") {
+        teamName = "IND";
+    }
+    else if(teamID == "SAS") {
+        teamName = "SAS";
+    }
+    else if(teamID == "TOR") {
+        teamName = "TOR";
+    }
+    else if(teamID == "MEM") {
+        teamName = "MEM";
+    }
+    else if(teamID == "CLE") {
         teamName = "CLE";
     }
 
