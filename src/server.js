@@ -174,6 +174,14 @@ function mostConsistent(){
     team[1] += addAway[1];
   })
 
+  totalWins.sort(function(a,b) {
+    const n1 = a[1];
+    const n2 = b[1];
+
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
+    else{return 0;}
+  });
   return totalWins;
 }
 
