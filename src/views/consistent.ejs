@@ -255,6 +255,161 @@ select {
                 }
               }
           </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+<!-- This part is used to create the bar graph -->
+        <canvas id="canvas"></canvas>
         <script type="module" src="filterConsistent.js"></script>
+        <script>
+
+        function getData(passedData){ // home, away, or all data
+            var dataString = passedData.innerText.split(',');
+            var data = [];
+
+            for(let i = 0; i < dataString.length; ++i){
+                if(i % 2 == 0){
+                    var combinedData = [dataString[i], dataString[i+1]];
+                    data.push(combinedData)
+                }
+            }
+            console.log(data)
+            return data;
+       }
+         
+    function match(id) {
+    var teamID = id;
+    var teamName = "N/A";
+
+    if(teamID == 1610612738) {
+        teamName = "BOS";
+
+    }
+    else if(teamID == 1610612748) {
+        teamName = "MIA";
+    }
+    else if(teamID == 1610612740) {
+        teamName = "NOP";
+    }
+    else if(teamID == 1610612745) {
+        teamName = "HOU";
+    }
+    else if(teamID == 1610612737) {
+        teamName = "ATL";
+    }
+    else if(teamID == 1610612751) {
+        teamName = "BKN";
+    }
+    else if(teamID == 1610612765) {
+        teamName = "DET";
+    }
+    else if(teamID == 1610612744) {
+        teamName = "GSW";
+    }
+    else if(teamID == 1610612747) {
+        teamName = "LAL";
+    }
+    else if(teamID == 1610612750) {
+        teamName = "MIN";
+    }
+    else if(teamID == 1610612753) {
+        teamName = "ORL";
+    }
+    else if(teamID == 1610612755) {
+        teamName = "PHI";
+    }
+    else if(teamID == 1610612762) {
+        teamName = "UTA";
+    }
+    else if(teamID == 1610612746) {
+        teamName = "LAC";
+    }
+    else if(teamID == 1610612741) {
+        teamName = "CHI";
+    }
+    else if(teamID == 1610612743) {
+        teamName = "DEN";
+    }
+    else if(teamID == 1610612756) {
+        teamName = "PHX";
+    }
+    else if(teamID == 1610612757) {
+        teamName = "POR";
+    }
+    else if(teamID == 1610612758) {
+        teamName = "SAC";
+    }
+    else if(teamID == 1610612760) {
+        teamName = "OKC";
+    }
+    else if(teamID == 1610612764) {
+        teamName = "WAS";
+    }
+    else if(teamID == 1610612766) {
+        teamName = "CHA";
+    }
+    else if(teamID == 1610612742) {
+        teamName = "DAL";
+
+    }
+    else if(teamID == 1610612749) {
+        teamName = "MIL";
+    }
+    else if(teamID == 1610612752) {
+        teamName = "NYK";
+    }
+    else if(teamID == 1610612754) {
+        teamName = "IND";
+    }
+    else if(teamID == 1610612759) {
+        teamName = "SAS";
+    }
+    else if(teamID == 1610612761) {
+        teamName = "TOR";
+    }
+    else if(teamID == 1610612763) {
+        teamName = "MEM";
+    }
+    else if(teamID == 1610612739) {
+        teamName = "CLE";
+    }
+
+    return teamName;
+}
+
+
+          var jsonfile = getData(allData);
+          for(let i = 0; i < jsonfile.length;i++){
+            jsonfile[i][0] = match(jsonfile[i][0])
+          }
+
+          console.log("outputting JSONFILE")
+          console.log(jsonfile);
+
+          var labels = jsonfile.map(function(e) {
+            return e[0];
+          });
+          var data = jsonfile.map(function(e) {
+            return e[1];
+          });
+
+          var ctx = canvas.getContext('2d');
+          var config = {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Consistent Teams',
+                  data: data,
+                  backgroundColor: 'green'
+                }]
+            }
+          };
+
+          var chart = new Chart(ctx, config);
+        </script>
+
+
+
+
     </body>
 </html>
