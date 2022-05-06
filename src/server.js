@@ -148,7 +148,6 @@ function MET(){
 
     if(map1.has(users_games[i].HOME_TEAM_ID)){
       map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+points_home+rebounds_home+assists_home);
-      //console.log("This is the team with the best eff: " + map1.get('1610612748'));
     }
     else{
       map1.set(users_games[i].HOME_TEAM_ID, points_home+rebounds_home+assists_home);
@@ -156,76 +155,100 @@ function MET(){
 
     if(map1.has(users_games[i].TEAM_ID_away)){
       map1.set(users_games[i].TEAM_ID_away, parseFloat(map1.get(users_games[i].TEAM_ID_away))+points_away+rebounds_away+assists_away);
-     // console.log("This is the team with the best eff: " + map1.get('1610612748'));
     }
     else{
       map1.set(users_games[i].TEAM_ID_away, points_away+rebounds_away+assists_away);
     }
-
-    
   }
   var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
 
   return homeID;
 }
 
+function mostConsistent(){
+  var totalWins = mostHomeWins();
+  var awayWins = mostAwayWins();
+
+  totalWins.forEach(team => {
+    var addAway = awayWins.find(el => el[0] == team[0]);
+    team[1] += addAway[1];
+  })
+
+  totalWins.sort(function(a,b) {
+    const n1 = a[1];
+    const n2 = b[1];
+
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
+    else{return 0;}
+  });
+  return totalWins;
+}
+
+// mostConsistent();
+
 function mostHomeWins(){
   const map1 = new Map();
   
-  
   for(let i = 0; i < users_games.length; i++){
     var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
-  
     if (isNaN(home_wins)) home_wins = 0;
-    
+
     if(map1.has(users_games[i].HOME_TEAM_ID)){
       map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+ home_wins);
     }
     else{
       map1.set(users_games[i].HOME_TEAM_ID, home_wins);
     }
-
-
-    
   }
-  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
 
-  console.log(homeID);
+  var sortedArr = Array.from(map1);
+  sortedArr.sort(function(a,b) {
+    const n1 = a[1];
+    const n2 = b[1];
+
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
+    else{return 0;}
+  });
+
+  return sortedArr;
 }
 
-mostHomeWins();
+// mostHomeWins();
 
 
 function mostAwayWins(){
   const map1 = new Map();
   
-  
   for(let i = 0; i < users_games.length; i++){
-    var home_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
-
-    if(home_wins == 0){
-      home_wins = 1;
-    }
-  
-    if (isNaN(home_wins)) home_wins = 0;
-
-    
-    if(map1.has(users_games[i].HOME_TEAM_ID)){
-      map1.set(users_games[i].HOME_TEAM_ID, parseFloat(map1.get(users_games[i].HOME_TEAM_ID))+ home_wins);
+    var away_wins = parseFloat(users_games[i].HOME_TEAM_WINS);
+    if(away_wins == 0){
+      away_wins = 1;
     }
     else{
-      map1.set(users_games[i].HOME_TEAM_ID, home_wins);
+      away_wins = 0;
     }
+    if (isNaN(away_wins)) away_wins = 0;
 
-
-    
+    if(map1.has(users_games[i].VISITOR_TEAM_ID)){
+      map1.set(users_games[i].VISITOR_TEAM_ID, parseFloat(map1.get(users_games[i].VISITOR_TEAM_ID))+ away_wins);
+    }
+    else{
+      map1.set(users_games[i].VISITOR_TEAM_ID, away_wins);
+    }
   }
-  var homeID = [...map1.entries()].reduce((a, e ) => e[1] > a[1] ? e : a)[0] ;
+  var sortedArr = Array.from(map1);
+  sortedArr.sort(function(a,b) {
+    const n1 = a[1];
+    const n2 = b[1];
 
-  console.log(homeID);
+    if(n1 < n2){return 1;}
+    else if(n1 > n2){return -1;}
+    else{return 0;}
+  });
+  return sortedArr;
 }
-
-mostAwayWins();
 
 
 app.set("view engine", "ejs");
@@ -254,8 +277,10 @@ app.get("/games", function (req, res) {
 });
 
 app.get("/consistent", function (req, res) { //most consistent team page
-  var user = require('./players.json'); 
-  res.render("consistent", {allUsers: JSON.stringify(user)});
+  var home = mostHomeWins();
+  var away = mostAwayWins();
+  var all = mostConsistent();
+  res.render("consistent", {home: home, away: away, all: all});
 });
 
 app.get("/admin/players", function(req, res) {

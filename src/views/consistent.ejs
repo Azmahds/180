@@ -139,53 +139,100 @@ select {
 </style>
 </head>
 <body>
-        <div class="container">
-            <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Most Consistent Team</h1><br>
-        </div>
+    <div class="container">
+        <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Most Consistent Team</h1><br>
 
 <!-- Trigger/Open The Modal -->
-<button id="home" class="button" style="margin-left: 30px;">Most Home Wins</button>
+        <button id="home" class="button" style="margin-left: 34%;">Most Home Wins</button>
 
-<!-- The Modal -->
-<div id="homeModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span onclick="document.getElementById('homeModal').style.display='none'"
-      class="close">&times;
-    </span>   
-    <div id="home_form_page">
-      <div id="home_form_body">
-          <div id="home_head">
-              <h1 id="home_heading">Most Home Wins</h1>
-          </div>
-          <br/>
-      </div>
+
+        <!-- The Modal -->
+        <div id="homeModal" class="modal">
+
+        <!-- Modal content -->
+            <div class="modal-content">
+                <span onclick="document.getElementById('homeModal').style.display='none'"
+                class="close">&times;
+                </span>   
+                <div id="home_form_page">
+                <div id="home_form_body">
+                    <div id="home_head">
+                        <h1 id="home_heading">Most Home Wins</h1>
+                    </div>
+                    <br/>
+                </div>
+                </div>
+                <table class="table" cellpadding="10" id="htable">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align: center;">#</th>
+                            <th scope="col" style="text-align: center;">Team Name</th>
+                            <th scope="col" style="text-align: center;">Team ID</th>
+                            <th scope="col" style="text-align: center;">Home Wins</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button id="away" class="button">Most Away Wins</button>
+        <div id="AwayModal" class="modal">
+
+            <!-- Modal content -->
+                <div class="modal-content">
+                    <span onclick="document.getElementById('AwayModal').style.display='none'"
+                    class="close">&times;
+                    </span>   
+                    <div id="away_form_page">
+                    <div id="away_form_body">
+                        <div id="away_head">
+                            <h1 id="away_heading">Most Away Wins</h1>
+                        </div>
+                        <br/>
+                    </div>
+                    </div>
+                    <table class="table" cellpadding="10" id="atable">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center;">#</th>
+                                <th scope="col" style="text-align: center;">Team Name</th>
+                                <th scope="col" style="text-align: center;">Team ID</th>
+                                <th scope="col" style="text-align: center;">Away Wins</th>
+                            </tr>
+                        </thead>
+                        <tbody id="abody">
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        <table class="table" cellpadding="10" id="table">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center;"># </th>
+                    <th scope="col" style="text-align: center;">Team Name</th>
+                    <th scope="col" style="text-align: center;">TEAM_ID</th>
+                    <th scope="col" style="text-align: center;">TOTAL_WINS</th>
+                </tr>
+            </thead>
+            <tbody id="body">
+            </tbody>
+        </table>          
+        <p hidden id="allData"><%= all %></p>
+        <p hidden id="homeData"><%= home %></p>
+        <p hidden id="awayData"><%= away %></p>
     </div>
-    <table class="table" cellpadding="10" id="etable">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Team Name</th>
-                <th scope="col">Team ID</th>
-                <th scope="col">Home Wins</th>
-            </tr>
-        </thead>
-        <tbody id="ebody">
-        </tbody>
-    </table>
-  </div>
-</div>
-        
-    <p hidden id="data"><%= allUsers %></p>
-</div>
 
         <script>
             // Get the modal
             var modal = document.getElementById("homeModal");
+            var modal2 = document.getElementById("AwayModal");
           
             // Get the button that opens the modal
             var btn = document.getElementById("home");
+            var btn2 = document.getElementById("away");
           
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
@@ -194,14 +241,175 @@ select {
             btn.onclick = function() {
               modal.style.display = "block";
             }
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
             
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == modal2) {
+                  modal2.style.display = "none";
+                }
               }
-            }
           </script>
-        <script type="module" src="filterPlayer.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+<!-- This part is used to create the bar graph -->
+        <canvas id="canvas"></canvas>
+        <script type="module" src="filterConsistent.js"></script>
+        <script>
+
+        function getData(passedData){ // home, away, or all data
+            var dataString = passedData.innerText.split(',');
+            var data = [];
+
+            for(let i = 0; i < dataString.length; ++i){
+                if(i % 2 == 0){
+                    var combinedData = [dataString[i], dataString[i+1]];
+                    data.push(combinedData)
+                }
+            }
+            console.log(data)
+            return data;
+       }
+         
+    function match(id) {
+    var teamID = id;
+    var teamName = "N/A";
+
+    if(teamID == 1610612738) {
+        teamName = "BOS";
+
+    }
+    else if(teamID == 1610612748) {
+        teamName = "MIA";
+    }
+    else if(teamID == 1610612740) {
+        teamName = "NOP";
+    }
+    else if(teamID == 1610612745) {
+        teamName = "HOU";
+    }
+    else if(teamID == 1610612737) {
+        teamName = "ATL";
+    }
+    else if(teamID == 1610612751) {
+        teamName = "BKN";
+    }
+    else if(teamID == 1610612765) {
+        teamName = "DET";
+    }
+    else if(teamID == 1610612744) {
+        teamName = "GSW";
+    }
+    else if(teamID == 1610612747) {
+        teamName = "LAL";
+    }
+    else if(teamID == 1610612750) {
+        teamName = "MIN";
+    }
+    else if(teamID == 1610612753) {
+        teamName = "ORL";
+    }
+    else if(teamID == 1610612755) {
+        teamName = "PHI";
+    }
+    else if(teamID == 1610612762) {
+        teamName = "UTA";
+    }
+    else if(teamID == 1610612746) {
+        teamName = "LAC";
+    }
+    else if(teamID == 1610612741) {
+        teamName = "CHI";
+    }
+    else if(teamID == 1610612743) {
+        teamName = "DEN";
+    }
+    else if(teamID == 1610612756) {
+        teamName = "PHX";
+    }
+    else if(teamID == 1610612757) {
+        teamName = "POR";
+    }
+    else if(teamID == 1610612758) {
+        teamName = "SAC";
+    }
+    else if(teamID == 1610612760) {
+        teamName = "OKC";
+    }
+    else if(teamID == 1610612764) {
+        teamName = "WAS";
+    }
+    else if(teamID == 1610612766) {
+        teamName = "CHA";
+    }
+    else if(teamID == 1610612742) {
+        teamName = "DAL";
+
+    }
+    else if(teamID == 1610612749) {
+        teamName = "MIL";
+    }
+    else if(teamID == 1610612752) {
+        teamName = "NYK";
+    }
+    else if(teamID == 1610612754) {
+        teamName = "IND";
+    }
+    else if(teamID == 1610612759) {
+        teamName = "SAS";
+    }
+    else if(teamID == 1610612761) {
+        teamName = "TOR";
+    }
+    else if(teamID == 1610612763) {
+        teamName = "MEM";
+    }
+    else if(teamID == 1610612739) {
+        teamName = "CLE";
+    }
+
+    return teamName;
+}
+
+
+          var jsonfile = getData(allData);
+          for(let i = 0; i < jsonfile.length;i++){
+            jsonfile[i][0] = match(jsonfile[i][0])
+          }
+
+          console.log("outputting JSONFILE")
+          console.log(jsonfile);
+
+          var labels = jsonfile.map(function(e) {
+            return e[0];
+          });
+          var data = jsonfile.map(function(e) {
+            return e[1];
+          });
+
+          var ctx = canvas.getContext('2d');
+          var config = {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Consistent Teams',
+                  data: data,
+                  backgroundColor: 'green'
+                }]
+            }
+          };
+
+          var chart = new Chart(ctx, config);
+        </script>
+
+
+
+
     </body>
 </html>
