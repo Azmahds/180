@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Game Details</title>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
@@ -135,10 +136,53 @@ select {
     width: 500px;
     height: 30px;
 }
+.topnav {
+                background-color: #333;
+                overflow: hidden;
+            }
+            
+            /* Style the links inside the navigation bar */
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 25px;
+            }
+            
+            /* Change the color of links on hover */
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+            
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: sienna;
+                color: black;
+            }
 
 </style>
 </head>
 <body>
+    <div class="topnav">
+        <a href="/">
+            <img src="https://iconarchive.com/download/i88906/icons8/ios7/Sports-Basketball.ico" alt="Ball" style="max-width: 20px; max-height: 24px">
+            Home</a> 
+        <a href="/players">
+            <img src="https://cdn-icons.flaticon.com/png/512/5140/premium/5140340.png?token=exp=1652314043~hmac=0008b7cdf1a2338f22ebc5b9ec4592ce" alt="Jersey" style="max-width: 30px; max-height: 30px">
+            Players</a> 
+        <a href="/games">
+            <img src="https://cdn-icons.flaticon.com/png/512/3469/premium/3469976.png?token=exp=1652314113~hmac=1a06d441b720f30682af12de2001e70d" alt="Court" style="max-width: 30px; max-height: 30px">
+            Games</a>
+        <a class="active" href="/consistent">
+            <img src="https://cdn0.iconfinder.com/data/icons/eon-basketball-i-1/32/podium_win_rank_ranking-512.png" alt="Ranking" style="max-width: 30px; max-height: 30px">
+            Consistent</a>
+        <a href="/admin">
+            <img src="https://cdn-icons-png.flaticon.com/512/353/353558.png" alt="Ranking" style="max-width: 30px; max-height: 30px">
+            Admin Players</a>
+      </div>
     <div class="container">
         <h1 style= "width: 500px; margin: 0 auto; margin-top: 10%; text-align: center;">Most Consistent Team</h1><br>
 

@@ -67,7 +67,7 @@ app.get("/games", function (req, res) {
   res.render("server_games", {allUsers: JSON.stringify(teams)});
 });
 
-app.get("/admin/players", function(req, res) {
+app.get("/admin", function(req, res) {
   var user = require('./players.json'); 
   res.render("players", {allUsers: JSON.stringify(user)});
 });

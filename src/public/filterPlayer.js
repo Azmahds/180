@@ -1,9 +1,20 @@
-
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
     createTable();
     document.getElementById("buttonid").addEventListener("click", () => filterPlayer())
 })
+
+// caches.open('home').then( cache => {
+//     cache.add('/data').then(() => {
+//         console.log("data cached")
+//         caches.open('home').then( cache => {
+//             cache.keys('/data').then(req => console.log(req));
+//         })
+//     });
+// })
+
+// console.log(localStorage)
+
 
 function getData(){
     let allD = document.getElementById("data");
