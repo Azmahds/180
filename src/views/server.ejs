@@ -46,16 +46,69 @@
                 background-color: sienna;
                 color: black;
             }
-            .header {
-                padding: 60px;
-                text-align: center;
-                font-size: 30px;
+            html {
+                box-sizing: border-box;
               }
-            div img {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
+              
+              *, *:before, *:after {
+                box-sizing: inherit;
+              }
+              
+              .column {
+                float: left;
+                width: 33.3%;
+                margin-bottom: 16px;
+                padding: 0 8px;
+              }
+              
+              .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                margin: 8px;
+              }
+              
+              .about-section {
+                padding: 50px;
+                text-align: center;
+                background-color: #474e5d;
+                color: white;
+              }
+              
+              .container {
+                padding: 0 16px;
+              }
+              
+              .container::after, .row::after {
+                content: "";
+                clear: both;
+                display: table;
+              }
+              
+              .title {
+                color: grey;
+              }
+              
+              .button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+              }
+              
+              .button:hover {
+                background-color: #555;
+              }
+              
+              @media screen and (max-width: 650px) {
+                .column {
+                  width: 100%;
+                  display: block;
+                }
+              }
         </style>
     </head>
     <body>
@@ -64,10 +117,10 @@
                 <img src="https://iconarchive.com/download/i88906/icons8/ios7/Sports-Basketball.ico" alt="Ball" style="max-width: 20px; max-height: 24px">
                 Home</a> 
             <a href="/players">
-                <img src="https://cdn-icons.flaticon.com/png/512/5140/premium/5140340.png?token=exp=1652314043~hmac=0008b7cdf1a2338f22ebc5b9ec4592ce" alt="Jersey" style="max-width: 30px; max-height: 30px">
+                <img src="https://cdn-icons-png.flaticon.com/512/6909/6909138.png" alt="Jersey" style="max-width: 30px; max-height: 30px">
                 Players</a> 
             <a href="/games">
-                <img src="https://cdn-icons.flaticon.com/png/512/3469/premium/3469976.png?token=exp=1652314113~hmac=1a06d441b720f30682af12de2001e70d" alt="Court" style="max-width: 30px; max-height: 30px">
+                <img src="https://cdn-icons-png.flaticon.com/512/4165/4165161.png" alt="Court" style="max-width: 30px; max-height: 30px">
                 Games</a>
             <a href="/consistent">
                 <img src="https://cdn0.iconfinder.com/data/icons/eon-basketball-i-1/32/podium_win_rank_ranking-512.png" alt="Ranking" style="max-width: 30px; max-height: 30px">
@@ -76,13 +129,52 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/353/353558.png" alt="Ranking" style="max-width: 30px; max-height: 30px">
                 Admin Players</a>
           </div>
-          <div class="header">
-            <h1>Home Page</h1>
-            <p>NBA Game Data</p>
+          
+          <div class="about-section">
+            <h1>About Us Page</h1>
+            <p>Some text about who we are and what we do.</p>
+            <p>Resize the browser window to see that this page is responsive by the way.</p>
           </div>
-          <div class="container">
-            <div class="col-md-12">
-                
+          
+          <h2 style="text-align:center">Our Team</h2>
+          <div class="row">
+            <div class="column">
+              <div class="card">
+                <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+                <div class="container">
+                  <h2>Jane Doe</h2>
+                  <p class="title">CEO & Founder</p>
+                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                  <p>jane@example.com</p>
+                  <p><button class="button">Contact</button></p>
+                </div>
+              </div>
+            </div>
+          
+            <div class="column">
+              <div class="card">
+                <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+                <div class="container">
+                  <h2>Mike Ross</h2>
+                  <p class="title">Art Director</p>
+                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                  <p>mike@example.com</p>
+                  <p><button class="button">Contact</button></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="column">
+              <div class="card">
+                <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+                <div class="container">
+                  <h2>John Doe</h2>
+                  <p class="title">Designer</p>
+                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                  <p>john@example.com</p>
+                  <p><button class="button">Contact</button></p>
+                </div>
+              </div>
             </div>
           </div>
     </body>
