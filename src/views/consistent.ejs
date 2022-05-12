@@ -255,6 +255,49 @@ select {
                     </table>
                 </div>
         </div>
+        <button id="insert" class="button" style="margin-right: 20px;">Insert</button>
+
+        <!-- The Modal -->
+        <div id="insertGameModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="document.getElementById('insertGameModal').style.display='none'"
+            class="close">&times;
+            </span>
+            <div id="insert_form_page">
+                <div id="insert_form_body">
+                    <div id="insert_head">
+                        <h1 id="insert_heading">Insert Player</h1>
+                    </div>
+                    <br />
+                    <div id="insert_input_name" class="input">
+                        <input id="insert_name" type="text" 
+                            Placeholder="Player Name" name="insertName">
+                    </div>
+                    <div id="insert_input_tid" class="input">
+                        <input id="insert_teamID" type="text" placeholder=
+                            "teamID" name="insertTeamID">
+                    </div>
+                    <div id="insert_input_pid" class="input">
+                        <input id="insert_playerID" type="text" 
+                            name="Player_ID" 
+                            placeholder="insertPlayerID">
+                    </div>
+                    <div id="insert_input_season" class="input">
+                    <input id="insert_season" type="text" 
+                        name="Season" 
+                        placeholder="insertSeason">
+                    </div>
+                    <div class="id input">
+                        <input id="insert_submit" type="submit" 
+                            name="submit" value="submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
         <table class="table" cellpadding="10" id="table">
             <thead>
                 <tr>
@@ -276,10 +319,12 @@ select {
             // Get the modal
             var modal = document.getElementById("homeModal");
             var modal2 = document.getElementById("AwayModal");
+            var modal3 = document.getElementById("insertGameDetails");
           
             // Get the button that opens the modal
             var btn = document.getElementById("home");
             var btn2 = document.getElementById("away");
+            var btn3 = document.getElementById("gameDetails");
           
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
@@ -291,6 +336,10 @@ select {
             btn2.onclick = function() {
                 modal2.style.display = "block";
             }
+            btn3.onclick = function() {
+                modal3.style.display = "block";
+            }
+
             
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
@@ -300,9 +349,14 @@ select {
                 if (event.target == modal2) {
                   modal2.style.display = "none";
                 }
+                if (event.target == modal3) {
+                    modal3.style.display = "none";
+                  }
               }
           </script>
+          <script src="insertGameDetails.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
 
 <!-- This part is used to create the bar graph -->
         <canvas id="canvas"></canvas>
