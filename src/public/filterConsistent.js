@@ -42,8 +42,9 @@ function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
             let player =  data[i];
             var row = table.insertRow(-1);
             var pidx = 0;
+            var cell;
             for(let j = 0; j < 4; ++j){
-                var cell = row.insertCell(j);
+                cell = row.insertCell(j);
                 if(j == 0){
                     cell.innerHTML = i + 1;
                 }
@@ -54,7 +55,17 @@ function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
                     cell.innerHTML = player[pidx];
                     ++pidx;
                 }
+                cell.style = "text-align: center"
             }
+            if(data == all){
+                continue;
+            }
+            
+            cell = row.insertCell(-1);
+            var img = document.createElement("img");
+            img = new Image(50,50);
+            img.src = getImage(player[0]);
+            cell.appendChild(img)
         }
     }
 }
@@ -205,6 +216,106 @@ function match(id) {
     }
     else if(teamID == 1610612739) {
         teamName = "CLE";
+    }
+
+    return teamName;
+}
+
+function getImage(id){
+    var teamID = id;
+    var teamName = "N/A";
+
+    if(teamID == 1610612738) {
+        teamName = "https://logos-world.net/wp-content/uploads/2020/05/Boston-Celtics-emblem.jpg";
+
+    }
+    else if(teamID == 1610612748) {
+        teamName = "https://blog.logomyway.com/wp-content/uploads/2021/07/miami-heat-logo.png";
+    }
+    else if(teamID == 1610612740) {
+        teamName = "https://www.si.com/.image/t_share/MTY4MjU5MTI5MDMxODYyMTQ1/image-placeholder-title.jpg";
+    }
+    else if(teamID == 1610612745) {
+        teamName = "https://wallpapercave.com/wp/wp1844063.jpg";
+    }
+    else if(teamID == 1610612737) {
+        teamName = "https://cdn.vox-cdn.com/thumbor/D2POE6qQQCUSprUUGb6mUy2qw84=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/8576931/8452_atlanta_hawks_alternate_2016.png";
+    }
+    else if(teamID == 1610612751) {
+        teamName = "https://patch.com/img/cdn/users/68453/2012/05/raw/842b4607fd503508899d7e15b062a4d5.jpg";
+    }
+    else if(teamID == 1610612765) {
+        teamName = "https://logos-world.net/wp-content/uploads/2020/05/Detroit-Pistons-emblem.jpg";
+    }
+    else if(teamID == 1610612744) {
+        teamName = "https://1000logos.net/wp-content/uploads/2018/01/golden-state-warriors-new-logo.jpg";
+    }
+    else if(teamID == 1610612747) {
+        teamName = "https://1000logos.net/wp-content/uploads/2017/03/los-angeles-lakers-logo.jpg";
+    }
+    else if(teamID == 1610612750) {
+        teamName = "https://logos-world.net/wp-content/uploads/2020/05/Minnesota-Timberwolves-emblem.jpg";
+    }
+    else if(teamID == 1610612753) {
+        teamName = "https://hyperpix.net/wp-content/uploads/2020/06/orlando-magic-logo-font-free-download-856x484.jpg";
+    }
+    else if(teamID == 1610612755) {
+        teamName = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Philadelphia_76ers_Logo.svg/1200px-Philadelphia_76ers_Logo.svg.png";
+    }
+    else if(teamID == 1610612762) {
+        teamName = "https://www.si.com/.image/t_share/MTY4MTI4MjA2MzQ3MDUyMzA1/jazz3jpg.jpg";
+    }
+    else if(teamID == 1610612746) {
+        teamName = "https://logowik.com/content/uploads/images/la-clippers7166.jpg";
+    }
+    else if(teamID == 1610612741) {
+        teamName = "https://1000logos.net/wp-content/uploads/2016/11/Chicago-Bulls-Emblem.jpg";
+    }
+    else if(teamID == 1610612743) {
+        teamName = "https://ewscripps.brightspotcdn.com/dims4/default/ea7f82c/2147483647/strip/true/crop/640x360+0+60/resize/1280x720!/quality/90/?url=https%3A%2F%2Fmediaassets.thedenverchannel.com%2Fphoto%2F2018%2F06%2F06%2Fdenver%20nuggets_new%20primary%20logo_1528350469591.jpg_89081663_ver1.0_640_480.jpg";
+    }
+    else if(teamID == 1610612756) {
+        teamName = "https://wallpaperaccess.com/full/1297668.jpg";
+    }
+    else if(teamID == 1610612757) {
+        teamName = "https://wp.usatodaysports.com/wp-content/uploads/sites/90/2019/04/unknown-2.jpeg";
+    }
+    else if(teamID == 1610612758) {
+        teamName = "https://content.sportslogos.net/news/2016/04/Kings-New-Logo-confirmed.png";
+    }
+    else if(teamID == 1610612760) {
+        teamName = "https://sports.cbsimg.net/images/visual/whatshot/Oklahoma_City_Thunder2.jpg";
+    }
+    else if(teamID == 1610612764) {
+        teamName = "https://content.sportslogos.net/logos/6/219/full/3g5wchibh2ltoh617fcpgmfio.png";
+    }
+    else if(teamID == 1610612766) {
+        teamName = "https://images.squarespace-cdn.com/content/v1/54a827bae4b0375c084b16b6/1423092102396-4WQPI4EA3AVS1JDCDM88/image-asset.png?format=1500w";
+    }
+    else if(teamID == 1610612742) {
+        teamName = "https://1000logos.net/wp-content/uploads/2018/05/Dallas-Mavericks-Logo-Color.jpg";
+
+    }
+    else if(teamID == 1610612749) {
+        teamName = "https://wallpaperaccess.com/full/3331979.jpg";
+    }
+    else if(teamID == 1610612752) {
+        teamName = "https://i.pinimg.com/originals/b6/a2/d2/b6a2d250ebfa7ef701fbca24be0f91f6.jpg";
+    }
+    else if(teamID == 1610612754) {
+        teamName = "https://1000logos.net/wp-content/uploads/2018/06/Indiana-Pacers-Logo-1990.jpg";
+    }
+    else if(teamID == 1610612759) {
+        teamName = "https://content.sportslogos.net/logos/6/233/full/827.png";
+    }
+    else if(teamID == 1610612761) {
+        teamName = "https://wallpaperaccess.com/full/1088198.jpg";
+    }
+    else if(teamID == 1610612763) {
+        teamName = "https://rare.design/wp-content/uploads/2019/11/Memphis-Grizzlies-Logo-emblem-1024x731.jpg";
+    }
+    else if(teamID == 1610612739) {
+        teamName = "https://www.cleveland.com/resizer/IdQUPZZSGUGyhe-f3SvrDoqb7FM=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.cleveland.com/home/cleve-media/width2048/img/startingblocks/photo/new-cavaliers-primary-logojpg-ecde4d110d8b58e4.jpg";
     }
 
     return teamName;
