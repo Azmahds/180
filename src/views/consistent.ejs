@@ -306,6 +306,8 @@ select {
 
 <!-- This part is used to create the bar graph -->
         <canvas id="canvas"></canvas>
+        <canvas id="canvasHome"></canvas>
+        <canvas id="canvasAway"></canvas>
         <script type="module" src="filterConsistent.js"></script>
         <script>
 
@@ -323,105 +325,105 @@ select {
             return data;
        }
          
-    function match(id) {
-    var teamID = id;
-    var teamName = "N/A";
+            function match(id) {
+            var teamID = id;
+            var teamName = "N/A";
 
-    if(teamID == 1610612738) {
-        teamName = "BOS";
+            if(teamID == 1610612738) {
+                teamName = "BOS";
 
-    }
-    else if(teamID == 1610612748) {
-        teamName = "MIA";
-    }
-    else if(teamID == 1610612740) {
-        teamName = "NOP";
-    }
-    else if(teamID == 1610612745) {
-        teamName = "HOU";
-    }
-    else if(teamID == 1610612737) {
-        teamName = "ATL";
-    }
-    else if(teamID == 1610612751) {
-        teamName = "BKN";
-    }
-    else if(teamID == 1610612765) {
-        teamName = "DET";
-    }
-    else if(teamID == 1610612744) {
-        teamName = "GSW";
-    }
-    else if(teamID == 1610612747) {
-        teamName = "LAL";
-    }
-    else if(teamID == 1610612750) {
-        teamName = "MIN";
-    }
-    else if(teamID == 1610612753) {
-        teamName = "ORL";
-    }
-    else if(teamID == 1610612755) {
-        teamName = "PHI";
-    }
-    else if(teamID == 1610612762) {
-        teamName = "UTA";
-    }
-    else if(teamID == 1610612746) {
-        teamName = "LAC";
-    }
-    else if(teamID == 1610612741) {
-        teamName = "CHI";
-    }
-    else if(teamID == 1610612743) {
-        teamName = "DEN";
-    }
-    else if(teamID == 1610612756) {
-        teamName = "PHX";
-    }
-    else if(teamID == 1610612757) {
-        teamName = "POR";
-    }
-    else if(teamID == 1610612758) {
-        teamName = "SAC";
-    }
-    else if(teamID == 1610612760) {
-        teamName = "OKC";
-    }
-    else if(teamID == 1610612764) {
-        teamName = "WAS";
-    }
-    else if(teamID == 1610612766) {
-        teamName = "CHA";
-    }
-    else if(teamID == 1610612742) {
-        teamName = "DAL";
+            }
+            else if(teamID == 1610612748) {
+                teamName = "MIA";
+            }
+            else if(teamID == 1610612740) {
+                teamName = "NOP";
+            }
+            else if(teamID == 1610612745) {
+                teamName = "HOU";
+            }
+            else if(teamID == 1610612737) {
+                teamName = "ATL";
+            }
+            else if(teamID == 1610612751) {
+                teamName = "BKN";
+            }
+            else if(teamID == 1610612765) {
+                teamName = "DET";
+            }
+            else if(teamID == 1610612744) {
+                teamName = "GSW";
+            }
+            else if(teamID == 1610612747) {
+                teamName = "LAL";
+            }
+            else if(teamID == 1610612750) {
+                teamName = "MIN";
+            }
+            else if(teamID == 1610612753) {
+                teamName = "ORL";
+            }
+            else if(teamID == 1610612755) {
+                teamName = "PHI";
+            }
+            else if(teamID == 1610612762) {
+                teamName = "UTA";
+            }
+            else if(teamID == 1610612746) {
+                teamName = "LAC";
+            }
+            else if(teamID == 1610612741) {
+                teamName = "CHI";
+            }
+            else if(teamID == 1610612743) {
+                teamName = "DEN";
+            }
+            else if(teamID == 1610612756) {
+                teamName = "PHX";
+            }
+            else if(teamID == 1610612757) {
+                teamName = "POR";
+            }
+            else if(teamID == 1610612758) {
+                teamName = "SAC";
+            }
+            else if(teamID == 1610612760) {
+                teamName = "OKC";
+            }
+            else if(teamID == 1610612764) {
+                teamName = "WAS";
+            }
+            else if(teamID == 1610612766) {
+                teamName = "CHA";
+            }
+            else if(teamID == 1610612742) {
+                teamName = "DAL";
 
-    }
-    else if(teamID == 1610612749) {
-        teamName = "MIL";
-    }
-    else if(teamID == 1610612752) {
-        teamName = "NYK";
-    }
-    else if(teamID == 1610612754) {
-        teamName = "IND";
-    }
-    else if(teamID == 1610612759) {
-        teamName = "SAS";
-    }
-    else if(teamID == 1610612761) {
-        teamName = "TOR";
-    }
-    else if(teamID == 1610612763) {
-        teamName = "MEM";
-    }
-    else if(teamID == 1610612739) {
-        teamName = "CLE";
-    }
+            }
+            else if(teamID == 1610612749) {
+                teamName = "MIL";
+            }
+            else if(teamID == 1610612752) {
+                teamName = "NYK";
+            }
+            else if(teamID == 1610612754) {
+                teamName = "IND";
+            }
+            else if(teamID == 1610612759) {
+                teamName = "SAS";
+            }
+            else if(teamID == 1610612761) {
+                teamName = "TOR";
+            }
+            else if(teamID == 1610612763) {
+                teamName = "MEM";
+            }
+            else if(teamID == 1610612739) {
+                teamName = "CLE";
+            }
 
-    return teamName;
-}
+            return teamName;
+        }
 
 
           var jsonfile = getData(allData);
@@ -453,6 +455,69 @@ select {
           };
 
           var chart = new Chart(ctx, config);
+// ------------------------------------------------
+          var jsonfile2 = getData(homeData);
+          for(let i = 0; i < jsonfile2.length;i++){
+            jsonfile2[i][0] = match(jsonfile2[i][0])
+          }
+
+          console.log("outputting JSONFILE")
+          console.log(jsonfile2);
+
+          var labels2 = jsonfile2.map(function(e) {
+            return e[0];
+          });
+          var data2 = jsonfile2.map(function(e) {
+            return e[1];
+          });
+
+          var ctx2 = canvasHome.getContext('2d');
+          var config2 = {
+            type: 'bar',
+            data: {
+                labels: labels2,
+                datasets: [{
+                  label: 'Home Teams',
+                  data: data2,
+                  backgroundColor: 'blue'
+                }]
+            }
+          };
+
+          var chart2 = new Chart(ctx2, config2);
+
+// ------------------------------------------------
+          var jsonfile3 = getData(awayData);
+          for(let i = 0; i < jsonfile3.length;i++){
+            jsonfile3[i][0] = match(jsonfile3[i][0])
+          }
+
+          console.log("outputting JSONFILE")
+          console.log(jsonfile3);
+
+          var labels2 = jsonfile3.map(function(e) {
+            return e[0];
+          });
+          var data2 = jsonfile3.map(function(e) {
+            return e[1];
+          });
+
+          var ctx2 = canvasAway.getContext('2d');
+          var config2 = {
+            type: 'bar',
+            data: {
+                labels: labels2,
+                datasets: [{
+                  label: 'Away Teams',
+                  data: data2,
+                  backgroundColor: 'red'
+                }]
+            }
+        }
+
+          var chart2 = new Chart(ctx2, config2);
+
+
         </script>
 
 
