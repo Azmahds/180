@@ -40,7 +40,7 @@ app.get("/consistent", function (req, res) { //most consistent team page
   res.render("consistent", {home: home, away: away, all: all});
 });
 
-app.get("/admin/players", function(req, res) {
+app.get("/admin", function(req, res) {
   var user = require('./players.json'); 
   res.render("players", {allUsers: JSON.stringify(user)});
 });
