@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
   users = require('./players.json'); 
-  res.render("server_players", {allUsers: JSON.stringify(users)});
+  res.render("server", {allUsers: JSON.stringify(users)});
 });
 
 app.get("/data", function (req, res) {
@@ -24,7 +24,7 @@ app.get("/data", function (req, res) {
 
 app.get("/players", function (req, res) {
   var user = require('./players.json'); 
-  res.render("server", {allUsers: JSON.stringify(user)});
+  res.render("server_players", {allUsers: JSON.stringify(user)});
 });
 
 app.get("/games", function (req, res) {
