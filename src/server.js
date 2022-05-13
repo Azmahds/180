@@ -37,7 +37,8 @@ app.get("/consistent", function (req, res) { //most consistent team page
   var home = mostHomeWins();
   var away = mostAwayWins();
   var all = mostConsistent();
-  res.render("consistent", {home: home, away: away, all: all});
+  var games = require('./games.json');
+  res.render("consistent", {home: home, away: away, all: all, data: JSON.stringify(games)});
 });
 
 app.get("/admin", function(req, res) {
@@ -66,14 +67,10 @@ app.post("/insertPlayer", function(req, res){
 app.post("/insertGameDetails", function(req,res){
   var table = users_games;
   var tmp = JSON.stringify(req.body);
-  console.log(tmp)
   let re = /\\/g;
   tmp = tmp.replace(re, '');
-  console.log(tmp)
   var str = '[' + tmp.slice(2, tmp.length-5) + ']';
-  console.log(str)
   var objs = JSON.parse(str);
-  console.log(objs)
   table.push(objs[0]);
   let json = JSON.stringify(table);
   let le = /\\r/g;

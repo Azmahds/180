@@ -9,6 +9,7 @@ window.addEventListener("load", (event) =>{
     createTable(0,0,0);
 
     setInterval(mostWins, 5000);
+    // setInterval(() => console.log(document.getElementById("allData").innerText), 5000)
 })
 
 function getData(passedData){ // home, away, or all data

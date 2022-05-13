@@ -374,6 +374,7 @@ select {
         <p hidden id="allData"><%= all %></p>
         <p hidden id="homeData"><%= home %></p>
         <p hidden id="awayData"><%= away %></p>
+        <p hidden id="data"><%= data %></p>
     </div>
 
         <script>
@@ -436,7 +437,6 @@ select {
                     data.push(combinedData)
                 }
             }
-            console.log(data)
             return data;
        }
          
@@ -546,9 +546,6 @@ select {
             jsonfile[i][0] = match(jsonfile[i][0])
           }
 
-          console.log("outputting JSONFILE")
-          console.log(jsonfile);
-
           var labels = jsonfile.map(function(e) {
             return e[0];
           });
@@ -575,9 +572,6 @@ select {
           for(let i = 0; i < jsonfile2.length;i++){
             jsonfile2[i][0] = match(jsonfile2[i][0])
           }
-
-          console.log("outputting JSONFILE")
-          console.log(jsonfile2);
 
           var labels2 = jsonfile2.map(function(e) {
             return e[0];
@@ -606,9 +600,6 @@ select {
           for(let i = 0; i < jsonfile3.length;i++){
             jsonfile3[i][0] = match(jsonfile3[i][0])
           }
-
-          console.log("outputting JSONFILE")
-          console.log(jsonfile3);
 
           var labels2 = jsonfile3.map(function(e) {
             return e[0];
