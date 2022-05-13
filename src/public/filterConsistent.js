@@ -1,6 +1,14 @@
+var all_g;
+var home_g;
+var away_g;
 window.addEventListener("load", (event) =>{
     console.log("Page loaded");
-    createTable();
+    all_g = getData(document.getElementById("allData"));
+    home_g = getData(document.getElementById("homeData"));
+    away_g = getData(document.getElementById("awayData"));
+    createTable(0,0,0);
+
+    setInterval(mostWins, 5000);
 })
 
 function getData(passedData){ // home, away, or all data
@@ -16,24 +24,30 @@ function getData(passedData){ // home, away, or all data
     return data;
 }
 
-function createTable(){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
+function createTable(h, v, a){ //NUMBER, TEAM NAME, TEAM_ID, TOTAL WINS
     var all = getData(document.getElementById("allData"));
     var home = getData(document.getElementById("homeData"));
     var away = getData(document.getElementById("awayData"));
-
+    
     var data;
 
     for(let tableNum = 0; tableNum < 3; ++tableNum){
         var table;
         if(tableNum == 0){
+            if(a){continue;}
+            document.getElementById("body").innerHTML = "";
             table = document.getElementById("body");
             data = all;
         }
         else if(tableNum == 1){
+            if(h){continue;}
+            document.getElementById("hbody").innerHTML = "";
             table = document.getElementById("hbody");
             data = home;
         }
         else{
+            if(v){continue;}
+            document.getElementById("abody").innerHTML = "";
             table = document.getElementById("abody");
             data = away;
         }
@@ -320,3 +334,44 @@ function getImage(id){
 
     return teamName;
 }
+
+function mostWins(){
+    var all = getData(document.getElementById("allData"));
+    var home = getData(document.getElementById("homeData"));
+    var away = getData(document.getElementById("awayData"));
+    
+    var h = false;
+    var v = false; 
+    var a = false;
+
+    if(compare(all, all_g)){
+        a = true;
+        all_g = all;
+        console.log("all updated");
+    }
+    if(compare(home, home_g)){
+        h = true;
+        home_g = home;
+        console.log("home updated");
+    }
+    if(compare(away, away_g)){
+        v = true;
+        away_g = away;
+        console.log("away updated");
+    }
+
+    createTable(h, v, a);
+  }
+
+  function compare(a, b){
+      if(a.length != b.length){return false;}
+
+      for(let i = 0; i < a.length; ++i){
+          for(let j = 0; j < 2; ++j){
+              if(a[i][j] != b[i][j]){
+                  return true;
+              }
+          }
+      }
+      return false;
+  }

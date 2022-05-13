@@ -255,6 +255,117 @@ select {
                     </table>
                 </div>
         </div>
+        <button id="gameDetails" class="button" style="margin-right: 20px;">Insert</button>
+
+        <!-- The Modal -->
+        <div id="insertGameDetails" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="document.getElementById('insertGameDetails').style.display='none'"
+            class="close">&times;
+            </span>
+            <div id="insert_form_page">
+                <div id="insert_form_body">
+                    <div id="insert_head">
+                        <h1 id="insert_heading">Insert Game Details</h1>
+                    </div>
+                    <br />
+                    <div id="insert_input_GAME_DATE_EST" class="input">
+                        <input id="insert_GAME_DATE_EST" type="text" 
+                            Placeholder="GAME DATE" name="insert_Game_Date">
+                    </div>
+                    <div id="insert_input_GAME_ID" class="input">
+                        <input id="insert_GAME_ID" type="text" placeholder=
+                            "GAME_ID" name="insertGAMEID">
+                    </div>
+                    <div id="insert_input_GAME_STATUS_TEXT" class="input">
+                        <input id="insert_GAME_STATUS_TEXT" type="text" 
+                            name="GAME_STATUS_TEXT" 
+                            placeholder="GAME_STATUS_TEXT">
+                    </div>
+                    <div id="insert_input_HOME_TEAM_ID" class="input">
+                    <input id="insert_HOME_TEAM_ID" type="text" 
+                        name="HOME_TEAM_ID" 
+                        placeholder="HOME_TEAM_ID">
+                    </div>
+                    <div id="insert_input_VISITOR_TEAM_ID" class="input">
+                        <input id="insert_VISITOR_TEAM_ID" type="text" 
+                            Placeholder="VISITOR_TEAM_ID" name="VISITOR_TEAM_ID">
+                    </div>
+                    <div id="insert_input_SEASON" class="input">
+                        <input id="insert_SEASON" type="text" 
+                            Placeholder="SEASON" name="SEASON">
+                    </div>
+                    <div id="insert_input_TEAM_ID_home" class="input">
+                        <input id="insert_TEAM_ID_home" type="text" 
+                            Placeholder="TEAM_ID_home" name="TEAM_ID_home">
+                    </div>
+                    <div id="insert_input_PTS_home" class="input">
+                        <input id="insert_PTS_home" type="text" 
+                            Placeholder="Home Points" name="PTS_home">
+                    </div>
+                    <div id="insert_input_FG_PCT_home" class="input">
+                        <input id="insert_FG_PCT_home" type="text" 
+                            Placeholder="Home Field Goal Percentage" name="FG_PCT_home">
+                    </div>
+                    <div id="insert_input_FT_PCT_home" class="input">
+                        <input id="insert_FT_PCT_home" type="text" 
+                            Placeholder="Home Free Throw Percentage" name="FT_PCT_home">
+                    </div>
+                    <div id="insert_input_FG3_PCT_home" class="input">
+                        <input id="insert_FG3_PCT_home" type="text" 
+                            Placeholder="Home 3 Point Percentage" name="FG3_PCT_home">
+                    </div>
+                    <div id="insert_input_AST_home" class="input">
+                        <input id="insert_AST_home" type="text" 
+                            Placeholder="Home Assists" name="AST_home">
+                    </div>
+                    <div id="insert_input_REB_home" class="input">
+                        <input id="insert_REB_home" type="text" 
+                            Placeholder="Home Rebounds" name="REB_home">
+                    </div>
+                    <div id="insert_input_TEAM_ID_away" class="input">
+                        <input id="insert_TEAM_ID_away" type="text" 
+                            Placeholder="Away Team ID" name="TEAM_ID_away">
+                    </div>
+                    <div id="insert_input_PTS_away" class="input">
+                        <input id="insert_PTS_away" type="text" 
+                            Placeholder="Away Points" name="PTS_away">
+                    </div>
+                    <div id="insert_input_FG_PCT_away" class="input">
+                        <input id="insert_FG_PCT_away" type="text" 
+                            Placeholder="Away Field Goal Percentage" name="FG_PCT_away">
+                    </div>
+                    <div id="insert_input_FT_PCT_away" class="input">
+                        <input id="insert_FT_PCT_away" type="text" 
+                            Placeholder="Away Free Throw Percentage" name="FT_PCT_away">
+                    </div>
+                    <div id="insert_input_FG3_PCT_away" class="input">
+                        <input id="insert_FG3_PCT_away" type="text" 
+                            Placeholder="Away 3 Field Goal Percentage" name="FG3_PCT_away">
+                    </div>
+                    <div id="insert_input_AST_away" class="input">
+                        <input id="insert_AST_away" type="text" 
+                            Placeholder="Away Assists" name="AST_away">
+                    </div>
+                    <div id="insert_input_REB_away" class="input">
+                        <input id="insert_REB_away" type="text" 
+                            Placeholder="Away Rebounds" name="REB_away">
+                    </div>
+                    <div id="insert_input_HOME_TEAM_WINS" class="input">
+                        <input id="insert_HOME_TEAM_WINS" type="text" 
+                            Placeholder="1 if Home Team wins, 0 if Visitor Team wins" name="insertName">
+                    </div>
+                    <div class="id input">
+                        <input id="insert_submit" type="submit" 
+                            name="submit" value="submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
         <table class="table" cellpadding="10" id="table">
             <thead>
                 <tr>
@@ -276,10 +387,12 @@ select {
             // Get the modal
             var modal = document.getElementById("homeModal");
             var modal2 = document.getElementById("AwayModal");
+            var modal3 = document.getElementById("insertGameDetails");
           
             // Get the button that opens the modal
             var btn = document.getElementById("home");
             var btn2 = document.getElementById("away");
+            var btn3 = document.getElementById("gameDetails");
           
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
@@ -291,6 +404,10 @@ select {
             btn2.onclick = function() {
                 modal2.style.display = "block";
             }
+            btn3.onclick = function() {
+                modal3.style.display = "block";
+            }
+
             
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
@@ -300,9 +417,14 @@ select {
                 if (event.target == modal2) {
                   modal2.style.display = "none";
                 }
+                if (event.target == modal3) {
+                    modal3.style.display = "none";
+                  }
               }
           </script>
+          <script src="insertGameDetails.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
 
 <!-- This part is used to create the bar graph -->
         <canvas id="canvas"></canvas>
