@@ -59,12 +59,26 @@ app.post("/insertPlayer", function(req, res){
     let le = /\\r/g;
   
     json = json.replace(le, '');
-    console.log(json[5000])
+    // console.log(json[5000])
     fs.writeFileSync('players.json', json);
 });
 
 app.post("/insertGameDetails", function(req,res){
-
+  var table = users_games;
+  var tmp = JSON.stringify(req.body);
+  console.log(tmp)
+  let re = /\\/g;
+  tmp = tmp.replace(re, '');
+  console.log(tmp)
+  var str = '[' + tmp.slice(2, tmp.length-5) + ']';
+  console.log(str)
+  var objs = JSON.parse(str);
+  console.log(objs)
+  table.push(objs[0]);
+  let json = JSON.stringify(table);
+  let le = /\\r/g;
+  json = json.replace(le, '');
+  fs.writeFileSync('games.json', json);
 });
 
 app.post("/updatePlayer", function(req, res){
