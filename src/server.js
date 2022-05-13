@@ -63,6 +63,10 @@ app.post("/insertPlayer", function(req, res){
     fs.writeFileSync('players.json', json);
 });
 
+app.post("/insertGameDetails", function(req,res){
+
+});
+
 app.post("/updatePlayer", function(req, res){
   console.log("UPDATE POST CALLED");
   var tmp = JSON.stringify(req.body);
@@ -109,6 +113,8 @@ app.post("/deletePlayer", function(req, res) {
 app.listen(3000, function () {
     console.log("Server is running on localhost3000");
 });
+
+
 
 const fs = require("fs")
 let csv = fs.readFileSync("./public/data/players.csv")
@@ -229,6 +235,7 @@ function csvTOJsonForTeams(){
 
 csvTOJsonForTeams();
 var users_teams = require('./teams.json'); 
+const { application } = require("express");
 
 //-------------------------------------------------------------
 
