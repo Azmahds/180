@@ -21,13 +21,11 @@ function insertGameData() {
     var nGID = document.getElementById("insert_GAME_ID").value
     var nGT = document.getElementById("insert_GAME_STATUS_TEXT").value
     var nSeason = document.getElementById("insert_SEASON").value
-    var nHome = document.getElementById("insert_TEAM_ID_home").value
     var nPTH = document.getElementById("insert_PTS_home").value
     var nPFGH = document.getElementById("insert_FG_PCT_home").value
     var nFG3H = document.getElementById("insert_FG3_PCT_home").value
     var nAH = document.getElementById("insert_AST_home").value
     var nRH = document.getElementById("insert_REB_home").value
-    var nAway = document.getElementById("insert_TEAM_ID_away").value
     var nPTA = document.getElementById("insert_PTS_away").value
     var nFGTA = document.getElementById("insert_FG_PCT_away").value
     var nPFTA = document.getElementById("insert_FT_PCT_away").value
@@ -55,14 +53,14 @@ function insertGameData() {
         HOME_TEAM_ID: nHID,
         VISITOR_TEAM_ID: nVID,
         SEASON: nSeason,
-        TEAM_ID_home: nHome,
+        TEAM_ID_home: nHID,
         PTS_home: nPTH,
         FG_PCT_home: nPFGH,
         FT_PCT_home: nPFTH,
         FG3_PCT_home: nFG3H,
         AST_home: nAH,
         REB_home: nRH,
-        TEAM_ID_away: nAway,
+        TEAM_ID_away: nVID,
         PTS_away: nPTA,
         FG_PCT_away: nFGTA,
         FT_PCT_away: nPFTA,
